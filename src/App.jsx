@@ -1,9 +1,9 @@
 
 
 import { useState } from 'react';
-import { AuthProvider } from './features/user/context/AuthContext';
-import LoginForm from './features/user/components/auth/LoginForm/LoginForm';
-import RegisterForm from './features/user/components/auth/RegisterForm/RegisterForm';
+import { AuthProvider } from './context/AuthContext';
+import LoginForm from './components/auth/LoginForm/LoginForm';
+import RegisterForm from './components/auth/RegisterForm/RegisterForm';
 import './App.css';
 
 function App() {

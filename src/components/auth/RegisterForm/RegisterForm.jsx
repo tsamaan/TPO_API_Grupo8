@@ -1,8 +1,11 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { AuthContext } from "../../../context/AuthContext";
 import "./RegisterForm.css";
 
 
-const RegisterForm = ({ onRegister, onShowLogin }) => {
+
+const RegisterForm = ({ onShowLogin }) => {
+  const { register, error } = useContext(AuthContext);
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
@@ -11,26 +14,34 @@ const RegisterForm = ({ onRegister, onShowLogin }) => {
     password: "",
     confirmPassword: ""
   });
-  const [error, setError] = useState("");
+  const [localError, setLocalError] = useState("");
+  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
-    setError("");
+    setLocalError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validaciones
     if (!form.nombre || !form.apellido || !form.email || !form.usuario || !form.password || !form.confirmPassword) {
-      setError("Todos los campos son obligatorios");
+      setLocalError("Todos los campos son obligatorios");
       return;
     }
     if (form.password !== form.confirmPassword) {
-      setError("Las contraseñas no coinciden");
+      setLocalError("Las contraseñas no coinciden");
       return;
     }
-    setError("");
-    if (onRegister) onRegister(form);
+    setLocalError("");
+    const ok = register(form);
+    if (ok) {
+      setSuccess(true);
+      setTimeout(() => {
+        setSuccess(false);
+        onShowLogin();
+      }, 1500);
+    }
   };
 
   return (
@@ -97,7 +108,9 @@ const RegisterForm = ({ onRegister, onShowLogin }) => {
           placeholder="Repetir contraseña"
           required
         />
-        {error && <div className="register-error">{error}</div>}
+  {localError && <div className="register-error">{localError}</div>}
+  {error && !localError && <div className="register-error">{error}</div>}
+  {success && <div className="login-success">¡Registro exitoso! Ahora podés iniciar sesión.</div>}
         <button type="submit">Registrarme</button>
       </form>
       <div className="register-footer">
