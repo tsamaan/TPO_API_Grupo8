@@ -1,12 +1,16 @@
 # feat: agregar validaciones al registro
 
 ## Archivos modificados
-- `src/features/user/components/auth/RegisterForm/RegisterForm.jsx`
+- `src/components/auth/RegisterForm/RegisterForm.jsx`
 
-## Descripción
-Se agregan validaciones al formulario de registro:
-- Todos los campos son obligatorios.
-- Las contraseñas deben coincidir.
-- Se muestra un mensaje de error si alguna validación falla.
+## Descripción detallada
+Se agregan validaciones al formulario de registro para mejorar la experiencia de usuario y evitar registros incompletos o con errores. Las validaciones implementadas son:
+- Todos los campos del formulario son obligatorios.
+- Las contraseñas ingresadas deben coincidir.
+- Si alguna validación falla, se muestra un mensaje de error claro al usuario.
 
-Esto mejora la experiencia del usuario y previene registros incompletos o con errores de contraseña.
+Estas validaciones aseguran que los datos ingresados sean consistentes y previenen errores comunes al momento de crear una cuenta.
+
+### Justificación y utilidad:
+- Mejora la calidad de los datos registrados.
+- Brinda feedback inmediato al usuario, evitando frustraciones.
