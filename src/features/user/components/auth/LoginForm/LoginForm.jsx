@@ -2,7 +2,8 @@ import React, { useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
 import "./LoginForm.css";
 
-const LoginForm = () => {
+
+const LoginForm = ({ onShowRegister }) => {
   const { login, error, isAuthenticated } = useContext(AuthContext);
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -34,13 +35,13 @@ const LoginForm = () => {
           placeholder="Ingresá tu contraseña"
           required
         />
-        <button type="submit">Ingresar</button>
         {error && <div className="login-error">{error}</div>}
         {isAuthenticated && <div className="login-success">¡Bienvenido a Haversack!</div>}
+        <button type="submit">Ingresar</button>
       </form>
       <div className="login-footer">
         <span>¿No tenés cuenta?</span>
-        <button className="register-btn" disabled>Registrate</button>
+        <button className="register-btn" type="button" onClick={onShowRegister}>Registrate</button>
       </div>
     </div>
   );

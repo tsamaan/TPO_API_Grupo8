@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import "./RegisterForm.css";
 
 
-const RegisterForm = ({ onRegister }) => {
+const RegisterForm = ({ onRegister, onShowLogin }) => {
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
@@ -100,6 +100,10 @@ const RegisterForm = ({ onRegister }) => {
         {error && <div className="register-error">{error}</div>}
         <button type="submit">Registrarme</button>
       </form>
+      <div className="register-footer">
+        <span>¿Ya tenés cuenta?</span>
+        <button className="login-btn" type="button" onClick={onShowLogin}>Iniciar sesión</button>
+      </div>
     </div>
   );
 };

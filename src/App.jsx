@@ -1,13 +1,22 @@
 
+
+import { useState } from 'react';
 import { AuthProvider } from './features/user/context/AuthContext';
 import LoginForm from './features/user/components/auth/LoginForm/LoginForm';
+import RegisterForm from './features/user/components/auth/RegisterForm/RegisterForm';
 import './App.css';
 
 function App() {
+  const [showRegister, setShowRegister] = useState(false);
+
   return (
     <AuthProvider>
       <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#f5f5f5' }}>
-        <LoginForm />
+        {showRegister ? (
+          <RegisterForm onShowLogin={() => setShowRegister(false)} />
+        ) : (
+          <LoginForm onShowRegister={() => setShowRegister(true)} />
+        )}
       </div>
     </AuthProvider>
   );
