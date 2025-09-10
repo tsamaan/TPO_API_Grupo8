@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./RegisterForm.css";
 
+
 const RegisterForm = ({ onRegister }) => {
   const [form, setForm] = useState({
     nombre: "",
@@ -10,14 +11,25 @@ const RegisterForm = ({ onRegister }) => {
     password: "",
     confirmPassword: ""
   });
+  const [error, setError] = useState("");
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+    setError("");
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí se llamará a la función de registro (onRegister)
+    // Validaciones
+    if (!form.nombre || !form.apellido || !form.email || !form.usuario || !form.password || !form.confirmPassword) {
+      setError("Todos los campos son obligatorios");
+      return;
+    }
+    if (form.password !== form.confirmPassword) {
+      setError("Las contraseñas no coinciden");
+      return;
+    }
+    setError("");
     if (onRegister) onRegister(form);
   };
 
@@ -85,6 +97,7 @@ const RegisterForm = ({ onRegister }) => {
           placeholder="Repetir contraseña"
           required
         />
+        {error && <div className="register-error">{error}</div>}
         <button type="submit">Registrarme</button>
       </form>
     </div>
