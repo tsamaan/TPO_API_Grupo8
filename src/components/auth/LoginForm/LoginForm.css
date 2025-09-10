@@ -1,3 +1,36 @@
+/* Responsive: escritorio y móvil */
+@media (max-width: 600px) {
+  .login-container, .register-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    margin: 24px auto;
+    border-radius: 12px;
+  }
+  .login-form, .register-form {
+    gap: 0.7rem;
+  }
+  .login-form input, .register-form input {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.7rem;
+  }
+  .login-form button, .register-form button {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+  .register-btn, .login-btn {
+    font-size: 0.98rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+@media (min-width: 601px) {
+  .login-container, .register-container {
+    max-width: 400px;
+    padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+    margin: 60px auto;
+    border-radius: 18px;
+  }
+}
 
 /* Estilo base para login y registro */
 .login-container, .register-container {
@@ -28,6 +61,7 @@
   border-radius: 8px;
   font-size: 1rem;
   background: #fafbfc;
+  color: #111;
   transition: border 0.2s;
 }
 .login-form input:focus, .register-form input:focus {
