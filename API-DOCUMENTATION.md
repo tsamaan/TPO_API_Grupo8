@@ -1,8 +1,9 @@
 # API REST - E-commerce Backend
 
-Documentación completa de endpoints disponibles en el servidor JSON Server.
+Documentación completa de endpoints disponibles en el servidor Express.
 
 **Base URL**: `http://localhost:3001`
+**Health Check**: `GET /health`
 
 ---
 
@@ -15,18 +16,22 @@ GET /products
 
 **Respuesta**:
 ```json
-[
-  {
-    "id": 1,
-    "name": "Smartphone Samsung Galaxy",
-    "price": 299.99,
-    "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
-    "image": "https://via.placeholder.com/300x300?text=Samsung+Galaxy",
-    "category": "electronics",
-    "stock": 15,
-    "tags": ["smartphone", "samsung", "android", "48mp", "pantalla grande"]
-  }
-]
+{
+  "success": true,
+  "message": "Products retrieved successfully",
+  "data": [
+    {
+      "id": 1,
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://via.placeholder.com/300x300?text=Samsung+Galaxy",
+      "category": "electronics",
+      "stock": 15,
+      "tags": ["smartphone", "samsung", "android", "48mp", "pantalla grande"]
+    }
+  ]
+}
 ```
 
 ### Obtener producto específico
@@ -254,26 +259,41 @@ DELETE /cart/{id}
 
 ### Iniciar el servidor
 ```bash
+# Servidor Express (recomendado)
 npm run server
+
+# Servidor con auto-reload
+npm run server:dev
+
+# JSON Server básico (alternativo)
+npm run server:json
 ```
 
 El servidor estará disponible en `http://localhost:3001`
 
+### Configuración
+1. Copia `.env.example` a `.env`
+2. Ajusta las variables según tu entorno
+3. Instala dependencias: `npm install`
+4. Inicia el servidor: `npm run server`
+
 ### Endpoints de desarrollo
 - **API Base**: `http://localhost:3001`
-- **Interfaz JSON Server**: `http://localhost:3001` (navegador)
+- **Health Check**: `http://localhost:3001/health`
+- **Logs**: Console con Morgan
 
 ---
 
 ## 📝 Notas Importantes
 
-1. **IDs**: Se generan automáticamente al crear nuevos recursos
-2. **Timestamps**: Incluir `createdAt` e `updatedAt` en formato ISO 8601
-3. **Validación**: JSON Server valida automáticamente el formato JSON
-4. **CORS**: Habilitado por defecto para desarrollo frontend
-5. **Tags**: Array de strings para búsqueda y filtrado
-6. **Precios**: Formato decimal (ej: `299.99`)
-7. **Stock**: Número entero
+1. **Responses**: Formato estándar con `success`, `message`, `data`
+2. **Error Handling**: Códigos HTTP apropiados y mensajes descriptivos
+3. **Validación**: Validación básica de campos requeridos
+4. **CORS**: Configurado para desarrollo (puerto 5173)
+5. **Logging**: Morgan para logs de requests HTTP
+6. **IDs**: Generación automática incremental
+7. **Timestamps**: ISO 8601 para fechas
+8. **Database**: Archivo JSON con escritura síncrona
 
 ---
 

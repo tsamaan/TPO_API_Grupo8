@@ -1,8 +1,12 @@
 const API_BASE_URL = 'http://localhost:3001'
 
-export const fetchProducts = async () => {
+export const fetchProducts = async (category = null) => {
   try {
-    const response = await fetch(`${API_BASE_URL}/products`)
+    const url = category
+      ? `${API_BASE_URL}/products?category=${category}`
+      : `${API_BASE_URL}/products`
+
+    const response = await fetch(url)
     if (!response.ok) {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
