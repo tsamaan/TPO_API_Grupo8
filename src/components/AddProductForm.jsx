@@ -1,5 +1,4 @@
-
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 const AddProductForm = () => {
   const [product, setProduct] = useState({
@@ -12,6 +11,25 @@ const AddProductForm = () => {
     category: ''
   });
 
+  const [imageUrl, setImageUrl] = useState('');
+  const [errors, setErrors] = useState({});
+
+  useEffect(() => {
+    const validate = () => {
+      const newErrors = {};
+      if (!product.name) newErrors.name = 'El nombre es obligatorio.';
+      if (!product.description) newErrors.description = 'La descripción es obligatoria.';
+      if (product.stock < 0) newErrors.stock = 'El stock no puede ser negativo.';
+      if (product.price <= 0) newErrors.price = 'El precio debe ser mayor que cero.';
+      if (!product.category) newErrors.category = 'La categoría es obligatoria.';
+      if (product.images.length === 0) newErrors.images = 'Debe agregar al menos una imagen.';
+      
+      setErrors(newErrors);
+    };
+
+    validate();
+  }, [product]);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setProduct(prevProduct => ({
@@ -23,14 +41,42 @@ const AddProductForm = () => {
   const handleImageChange = (e) => {
     setProduct(prevProduct => ({
       ...prevProduct,
-      images: [...e.target.files]
+      images: [...prevProduct.images, ...e.target.files]
+    }));
+  };
+
+  const handleAddImageUrl = () => {
+    if (imageUrl.trim() !== '') {
+      setProduct(prevProduct => ({
+        ...prevProduct,
+        images: [...prevProduct.images, imageUrl.trim()]
+      }));
+      setImageUrl('');
+    }
+  };
+
+  const handleRemoveImage = (index) => {
+    setProduct(prevProduct => ({
+      ...prevProduct,
+      images: prevProduct.images.filter((_, i) => i !== index)
     }));
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log('Datos del nuevo producto:', product);
-    alert('Producto creado. Revisa la consola.');
+    if (Object.keys(errors).length === 0) {
+      console.log('Datos del nuevo producto:', product);
+      alert('Producto creado. Revisa la consola.');
+    } else {
+      alert('Por favor, corrija los errores en el formulario.');
+    }
+  };
+
+  const getButtonTitle = () => {
+    if (Object.keys(errors).length === 0) {
+      return '';
+    }
+    return Object.values(errors).join('\n');
   };
 
   return (
@@ -45,8 +91,8 @@ const AddProductForm = () => {
           name="name"
           value={product.name}
           onChange={handleChange}
-          required
         />
+        {errors.name && <p className="error">{errors.name}</p>}
       </div>
 
       <div className="form-group">
@@ -56,8 +102,8 @@ const AddProductForm = () => {
           name="description"
           value={product.description}
           onChange={handleChange}
-          required
         />
+        {errors.description && <p className="error">{errors.description}</p>}
       </div>
 
       <div className="form-group">
@@ -69,6 +115,24 @@ const AddProductForm = () => {
           onChange={handleImageChange}
           multiple
         />
+        <div className="image-url-group">
+          <input
+            type="text"
+            placeholder="O ingrese una URL de imagen"
+            value={imageUrl}
+            onChange={(e) => setImageUrl(e.target.value)}
+          />
+          <button type="button" onClick={handleAddImageUrl}>Agregar URL</button>
+        </div>
+        {errors.images && <p className="error">{errors.images}</p>}
+        <div className="image-preview">
+          {product.images.map((image, index) => (
+            <div key={index} className="image-item">
+              <img src={typeof image === 'string' ? image : URL.createObjectURL(image)} alt={`preview ${index}`} />
+              <button type="button" onClick={() => handleRemoveImage(index)}>X</button>
+            </div>
+          ))}
+        </div>
       </div>
 
       <div className="form-group">
@@ -79,8 +143,8 @@ const AddProductForm = () => {
           name="stock"
           value={product.stock}
           onChange={handleChange}
-          required
         />
+        {errors.stock && <p className="error">{errors.stock}</p>}
       </div>
 
       <div className="form-group">
@@ -92,8 +156,8 @@ const AddProductForm = () => {
           value={product.price}
           onChange={handleChange}
           step="0.01"
-          required
         />
+        {errors.price && <p className="error">{errors.price}</p>}
       </div>
 
       <div className="form-group">
@@ -115,12 +179,18 @@ const AddProductForm = () => {
           name="category"
           value={product.category}
           onChange={handleChange}
-          required
         />
+        {errors.category && <p className="error">{errors.category}</p>}
       </div>
 
       <div className="form-actions">
-        <button type="submit">Crear Producto</button>
+        <button 
+          type="submit" 
+          disabled={Object.keys(errors).length > 0}
+          title={getButtonTitle()}
+        >
+          Crear Producto
+        </button>
       </div>
     </form>
   );
