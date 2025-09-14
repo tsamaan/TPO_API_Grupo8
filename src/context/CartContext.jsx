@@ -75,6 +75,54 @@ export const CartProvider = ({ children }) => {
         setTotalItems(0);
     };
 
+    // Función para calcular el total de la compra
+    const calculateTotal = () => {
+        return cart.reduce((total, item) => {
+            return total + (item.price * item.quantity);
+        }, 0);
+    };
+
+    // Función para procesar el checkout y actualizar el stock
+    const checkout = async () => {
+        try {
+            // Verificar stock disponible antes de procesar
+            for (const item of cart) {
+                if (item.quantity > item.stock) {
+                    throw new Error(`Stock insuficiente para ${item.name}`);
+                }
+            }
+
+            // Actualizar el stock de cada producto
+            for (const item of cart) {
+                const response = await fetch(`/api/productos/${item.id}`, {
+                    method: 'PATCH',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        stock: item.stock - item.quantity
+                    })
+                });
+
+                if (!response.ok) {
+                    throw new Error(`Error al actualizar el stock de ${item.name}`);
+                }
+            }
+
+            // Limpiar el carrito después de una compra exitosa
+            clearCart();
+            return {
+                success: true,
+                total: calculateTotal()
+            };
+        } catch (error) {
+            return {
+                success: false,
+                error: error.message
+            };
+        }
+    };
+
     // El valor que se proveerá al contexto
     const value = {
         cart,
@@ -83,7 +131,9 @@ export const CartProvider = ({ children }) => {
         setTotalItems,
         addToCart,
         removeFromCart,
-        clearCart
+        clearCart,
+        calculateTotal,
+        checkout
     };
 
     return (
