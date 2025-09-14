@@ -15,6 +15,9 @@ const LoginForm = ({ onShowRegister }) => {
 
   return (
     <div className="login-container">
+      <div className="breadcrumb">
+        Inicio <span>&gt;</span> Mi Cuenta <span>&gt;</span> Login
+      </div>
       <h2>Iniciá sesión</h2>
       <form className="login-form" onSubmit={handleSubmit}>
         <label htmlFor="email">Email</label>
@@ -35,9 +38,12 @@ const LoginForm = ({ onShowRegister }) => {
           placeholder="Ingresá tu contraseña"
           required
         />
+        <div className="forgot-password">
+          <a href="#">¿Olvidaste tu contraseña?</a>
+        </div>
         {error && <div className="login-error">{error}</div>}
         {isAuthenticated && <div className="login-success">¡Bienvenido a Haversack!</div>}
-        <button type="submit">Ingresar</button>
+        <button type="submit">Iniciar sesión</button>
       </form>
       <div className="login-footer">
         <span>¿No tenés cuenta?</span>
