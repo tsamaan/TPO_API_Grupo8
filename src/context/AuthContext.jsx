@@ -1,7 +1,6 @@
-import React, { createContext, useState } from "react";
+import React, { useState } from "react";
+import { AuthContext } from "./AuthContext";
 import { loginService, registerService } from "../services/authService";
-
-export const AuthContext = createContext();
 
 export const AuthProvider = ({ children }) => {
   const [isAuthenticated, setIsAuthenticated] = useState(false);

@@ -1,6 +1,3 @@
-
-
-
 import { useState, useContext } from 'react';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import LoginForm from './components/auth/LoginForm/LoginForm';
