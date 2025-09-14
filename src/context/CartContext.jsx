@@ -69,6 +69,12 @@ export const CartProvider = ({ children }) => {
         });
     };
 
+    // Función para vaciar completamente el carrito
+    const clearCart = () => {
+        setCart([]);
+        setTotalItems(0);
+    };
+
     // El valor que se proveerá al contexto
     const value = {
         cart,
@@ -76,7 +82,8 @@ export const CartProvider = ({ children }) => {
         totalItems,
         setTotalItems,
         addToCart,
-        removeFromCart
+        removeFromCart,
+        clearCart
     };
 
     return (
