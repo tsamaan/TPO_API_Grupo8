@@ -1,5 +1,6 @@
 import { useState, useContext } from 'react';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import LoginForm from './components/auth/LoginForm/LoginForm';
 import RegisterForm from './components/auth/RegisterForm/RegisterForm';
 import './App.css';
@@ -40,7 +41,9 @@ function MainApp() {
 function App() {
   return (
     <AuthProvider>
-      <MainApp />
+      <CartProvider>
+        <MainApp />
+      </CartProvider>
     </AuthProvider>
   );
 }
