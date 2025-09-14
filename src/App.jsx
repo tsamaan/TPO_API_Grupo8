@@ -23,6 +23,30 @@ function MainApp() {
     setUser(null);
   };
 
+  /*
+  DISEÑO ORIGINAL CENTRALIZADO (ahora reemplazado por React Router):
+
+  Este era el layout original que mostraba login/register centrados en pantalla.
+  Ya no se usa porque ahora tenemos navegación con rutas separadas:
+
+  return (
+    <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#f5f5f5' }}>
+      {isAuthenticated ? (
+        <ProtectedScreen onLogout={handleLogout} user={user} />
+      ) : showRegister ? (
+        <RegisterForm onShowLogin={() => setShowRegister(false)} />
+      ) : (
+        <LoginForm onShowRegister={() => setShowRegister(true)} />
+      )}
+    </div>
+  );
+
+  RAZÓN DEL CAMBIO:
+  - Antes: Una sola "página" que cambiaba contenido centrado
+  - Ahora: Múltiples rutas (/login, /registro, /, /dashboard) con navegación
+  - Beneficio: URLs específicas, navegación del browser, mejor UX
+  */
+
   return (
     <Router>
       <Routes>
