@@ -1,0 +1,125 @@
+/* Responsive: escritorio y móvil */
+@media (max-width: 600px) {
+  .login-container, .register-container {
+    max-width: 98vw;
+    padding: 1.2rem 0.5rem 1rem 0.5rem;
+    margin: 24px auto;
+    border-radius: 12px;
+  }
+  .login-form, .register-form {
+    gap: 0.7rem;
+  }
+  .login-form input, .register-form input {
+    font-size: 0.98rem;
+    padding: 0.6rem 0.7rem;
+  }
+  .login-form button, .register-form button {
+    font-size: 1rem;
+    padding: 0.7rem 0;
+  }
+  .register-btn, .login-btn {
+    font-size: 0.98rem;
+    padding: 0.3rem 0.8rem;
+  }
+}
+
+@media (min-width: 601px) {
+  .login-container, .register-container {
+    max-width: 400px;
+    padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+    margin: 60px auto;
+    border-radius: 18px;
+  }
+}
+
+/* Estilo base para login y registro */
+.login-container, .register-container {
+  max-width: 370px;
+  margin: 60px auto;
+  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: 0 2px 16px 0 #0002;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+.login-form, .register-form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.login-form label, .register-form label {
+  font-weight: 500;
+  color: #222;
+}
+.login-form input, .register-form input {
+  padding: 0.7rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #fafbfc;
+  color: #111;
+  transition: border 0.2s;
+}
+.login-form input:focus, .register-form input:focus {
+  border: 1.5px solid #c00;
+  outline: none;
+}
+.login-form button, .register-form button {
+  background: #c00;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 0.8rem 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 0.5rem;
+  transition: background 0.2s;
+  box-shadow: 0 1px 4px #0001;
+}
+.login-form button:hover, .register-form button:hover {
+  background: #a00;
+}
+.login-error, .register-error {
+  color: #c00;
+  background: #fee;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+  font-size: 0.98rem;
+}
+.login-success {
+  color: #0a0;
+  background: #efe;
+  border-radius: 6px;
+  padding: 0.5rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+.login-footer, .register-footer {
+  margin-top: 1.5rem;
+  text-align: center;
+  font-size: 1rem;
+}
+.register-btn, .login-btn {
+  margin-left: 0.5rem;
+  background: #fff;
+  color: #c00;
+  border: 1px solid #c00;
+  border-radius: 8px;
+  padding: 0.4rem 1.2rem;
+  font-size: 1rem;
+  font-weight: 500;
+  cursor: pointer;
+  opacity: 1;
+  transition: background 0.2s, color 0.2s;
+}
+.register-btn:hover, .login-btn:hover {
+  background: #c00;
+  color: #fff;
+}

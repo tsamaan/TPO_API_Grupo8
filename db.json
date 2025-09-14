@@ -1,0 +1,95 @@
+{
+  "products": [
+    {
+      "id": 1,
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://via.placeholder.com/300x300?text=Samsung+Galaxy",
+      "category": "electronics",
+      "stock": 15,
+      "tags": ["smartphone", "samsung", "android", "48mp", "pantalla grande"]
+    },
+    {
+      "id": 2,
+      "name": "Auriculares Bluetooth",
+      "price": 59.99,
+      "description": "Auriculares inalámbricos con cancelación de ruido",
+      "image": "https://via.placeholder.com/300x300?text=Auriculares",
+      "category": "electronics",
+      "stock": 8,
+      "tags": ["auriculares", "bluetooth", "inalámbrico", "cancelación ruido", "música"]
+    },
+    {
+      "id": 3,
+      "name": "Camiseta Deportiva",
+      "price": 24.99,
+      "description": "Camiseta transpirable para actividades deportivas",
+      "image": "https://via.placeholder.com/300x300?text=Camiseta",
+      "category": "clothing",
+      "stock": 20,
+      "tags": ["camiseta", "deportiva", "transpirable", "fitness", "ejercicio"]
+    },
+    {
+      "id": 4,
+      "name": "Libro de Programación",
+      "price": 39.99,
+      "description": "Guía completa de JavaScript y React",
+      "image": "https://via.placeholder.com/300x300?text=Libro+JS",
+      "category": "books",
+      "stock": 12,
+      "tags": ["programación", "javascript", "react", "desarrollo", "frontend"]
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "juan@example.com",
+      "name": "Juan Pérez",
+      "address": "Av. Corrientes 1234, Buenos Aires",
+      "phone": "+54 11 1234-5678"
+    },
+    {
+      "id": 2,
+      "email": "maria@example.com",
+      "name": "María García",
+      "address": "Calle Florida 567, Buenos Aires",
+      "phone": "+54 11 9876-5432"
+    }
+  ],
+  "cart": [
+    {
+      "id": 1,
+      "userId": 1,
+      "products": [
+        {
+          "productId": 1,
+          "quantity": 1,
+          "price": 299.99
+        }
+      ],
+      "total": 299.99,
+      "createdAt": "2025-01-15T10:30:00Z",
+      "updatedAt": "2025-01-15T10:30:00Z"
+    },
+    {
+      "id": 2,
+      "userId": 2,
+      "products": [
+        {
+          "productId": 2,
+          "quantity": 2,
+          "price": 59.99
+        },
+        {
+          "productId": 3,
+          "quantity": 1,
+          "price": 24.99
+        }
+      ],
+      "total": 144.97,
+      "createdAt": "2025-01-15T14:20:00Z",
+      "updatedAt": "2025-01-15T15:45:00Z"
+    }
+  ]
+}
