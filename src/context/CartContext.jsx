@@ -51,13 +51,32 @@ export const CartProvider = ({ children }) => {
         setTotalItems(prevTotal => prevTotal + quantity);
     };
 
+    // Función para eliminar un producto del carrito
+    const removeFromCart = (productId) => {
+        setCart(currentCart => {
+            // Buscar el producto en el carrito
+            const productToRemove = currentCart.find(item => item.id === productId);
+            
+            if (!productToRemove) {
+                throw new Error('El producto no existe en el carrito');
+            }
+
+            // Actualizar el total de items
+            setTotalItems(prevTotal => prevTotal - productToRemove.quantity);
+
+            // Filtrar el carrito para eliminar el producto
+            return currentCart.filter(item => item.id !== productId);
+        });
+    };
+
     // El valor que se proveerá al contexto
     const value = {
         cart,
         setCart,
         totalItems,
         setTotalItems,
-        addToCart
+        addToCart,
+        removeFromCart
     };
 
     return (
