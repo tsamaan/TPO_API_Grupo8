@@ -1,7 +1,8 @@
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
-import LoginForm from './components/auth/LoginForm/LoginForm';
-import RegisterForm from './components/auth/RegisterForm/RegisterForm';
+import HomePage from './pages/HomePage';
+import LoginPage from './pages/LoginPage';
 import './App.css';
 
 function ProtectedScreen({ onLogout, user }) {
@@ -15,25 +16,32 @@ function ProtectedScreen({ onLogout, user }) {
 }
 
 function MainApp() {
-  const [showRegister, setShowRegister] = useState(false);
   const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setUser(null);
-    setShowRegister(false);
   };
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#f5f5f5' }}>
-      {isAuthenticated ? (
-        <ProtectedScreen onLogout={handleLogout} user={user} />
-      ) : showRegister ? (
-        <RegisterForm onShowLogin={() => setShowRegister(false)} />
-      ) : (
-        <LoginForm onShowRegister={() => setShowRegister(true)} />
-      )}
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registro" element={<LoginPage />} />
+        <Route
+          path="/dashboard"
+          element={
+            isAuthenticated ? (
+              <ProtectedScreen onLogout={handleLogout} user={user} />
+            ) : (
+              <Navigate to="/login" replace />
+            )
+          }
+        />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </Router>
   );
 }
 
