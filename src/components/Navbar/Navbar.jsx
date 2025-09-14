@@ -9,7 +9,7 @@ const Navbar = () => {
         <div className="logo-container">
           <Link to="/">
             <img 
-              src="/placeholder-logo.png" 
+              src="https://dcdn-us.mitiendanube.com/stores/005/572/435/themes/common/logo-361476303-1745245688-cc2c95556edd9c5e5c2d51e099859cfe1745245688.jpg?0" 
               alt="Haversack" 
               className="logo"
             />
