@@ -34,16 +34,23 @@
 
 /* Estilo base para login y registro */
 .login-container, .register-container {
-  max-width: 370px;
-  margin: 60px auto;
-  padding: 2.5rem 2.5rem 1.5rem 2.5rem;
+  max-width: 500px;
+  margin: 40px auto;
+  padding: 2rem;
   background: #fff;
-  border-radius: 18px;
-  box-shadow: 0 2px 16px 0 #0002;
   display: flex;
   flex-direction: column;
-  align-items: center;
   position: relative;
+}
+
+.breadcrumb {
+  font-size: 14px;
+  color: #666;
+  margin-bottom: 2rem;
+}
+
+.breadcrumb span {
+  margin: 0 0.5rem;
 }
 .login-form, .register-form {
   width: 100%;
@@ -56,33 +63,40 @@
   color: #222;
 }
 .login-form input, .register-form input {
-  padding: 0.7rem 1rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
+  padding: 1rem;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
   font-size: 1rem;
-  background: #fafbfc;
-  color: #111;
-  transition: border 0.2s;
+  background: #fff;
+  color: #333;
+  transition: all 0.3s ease;
+  width: 100%;
+  margin-top: 0.5rem;
 }
+
 .login-form input:focus, .register-form input:focus {
-  border: 1.5px solid #c00;
+  border: 1px solid #ff0066;
   outline: none;
+  box-shadow: 0 0 0 2px rgba(255, 0, 102, 0.1);
 }
-.login-form button, .register-form button {
-  background: #c00;
+.login-form button[type="submit"], .register-form button[type="submit"] {
+  background: #ff0066;
   color: #fff;
   border: none;
-  border-radius: 8px;
-  padding: 0.8rem 0;
+  border-radius: 25px;
+  padding: 1rem 0;
   font-size: 1.1rem;
-  font-weight: 600;
+  font-weight: 500;
   cursor: pointer;
-  margin-top: 0.5rem;
-  transition: background 0.2s;
-  box-shadow: 0 1px 4px #0001;
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+  width: 100%;
+  text-transform: uppercase;
 }
-.login-form button:hover, .register-form button:hover {
-  background: #a00;
+
+.login-form button[type="submit"]:hover, .register-form button[type="submit"]:hover {
+  background: #e5005c;
+  transform: translateY(-1px);
 }
 .login-error, .register-error {
   color: #c00;
@@ -101,25 +115,41 @@
   margin-top: 0.5rem;
   text-align: center;
 }
+.forgot-password {
+  text-align: right;
+  margin: 0.5rem 0;
+}
+
+.forgot-password a {
+  color: #666;
+  text-decoration: none;
+  font-size: 0.9rem;
+}
+
+.forgot-password a:hover {
+  color: #ff0066;
+}
+
 .login-footer, .register-footer {
-  margin-top: 1.5rem;
+  margin-top: 2rem;
   text-align: center;
   font-size: 1rem;
+  color: #666;
 }
+
 .register-btn, .login-btn {
-  margin-left: 0.5rem;
-  background: #fff;
-  color: #c00;
-  border: 1px solid #c00;
-  border-radius: 8px;
-  padding: 0.4rem 1.2rem;
+  background: transparent;
+  color: #ff0066;
+  border: none;
   font-size: 1rem;
   font-weight: 500;
   cursor: pointer;
-  opacity: 1;
-  transition: background 0.2s, color 0.2s;
+  padding: 0;
+  margin-left: 0.5rem;
+  text-decoration: underline;
+  transition: color 0.3s ease;
 }
+
 .register-btn:hover, .login-btn:hover {
-  background: #c00;
-  color: #fff;
+  color: #e5005c;
 }
