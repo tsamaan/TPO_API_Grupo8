@@ -5,7 +5,7 @@
       "name": "Smartphone Samsung Galaxy",
       "price": 299.99,
       "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
-      "image": "https://via.placeholder.com/300x300?text=Samsung+Galaxy",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
       "category": "electronics",
       "stock": 15,
       "tags": ["smartphone", "samsung", "android", "48mp", "pantalla grande"]
@@ -15,7 +15,7 @@
       "name": "Auriculares Bluetooth",
       "price": 59.99,
       "description": "Auriculares inalámbricos con cancelación de ruido",
-      "image": "https://via.placeholder.com/300x300?text=Auriculares",
+      "image": "https://www.oscarbarbieri.com/pub/media/catalog/product/cache/7baadf0dec41407c7702efdbff940ecb/a/u/auri_jbl.jpg",
       "category": "electronics",
       "stock": 8,
       "tags": ["auriculares", "bluetooth", "inalámbrico", "cancelación ruido", "música"]
@@ -25,7 +25,7 @@
       "name": "Camiseta Deportiva",
       "price": 24.99,
       "description": "Camiseta transpirable para actividades deportivas",
-      "image": "https://via.placeholder.com/300x300?text=Camiseta",
+      "image": "https://vader-prod.s3.amazonaws.com/1739360300-camisetas-deportivas-transpirables-05-67ac88123d041.jpg",
       "category": "clothing",
       "stock": 20,
       "tags": ["camiseta", "deportiva", "transpirable", "fitness", "ejercicio"]
@@ -35,7 +35,7 @@
       "name": "Libro de Programación",
       "price": 39.99,
       "description": "Guía completa de JavaScript y React",
-      "image": "https://via.placeholder.com/300x300?text=Libro+JS",
+      "image": "https://http2.mlstatic.com/D_NQ_NP_729536-MLA72640343245_112023-O.webp",
       "category": "books",
       "stock": 12,
       "tags": ["programación", "javascript", "react", "desarrollo", "frontend"]
