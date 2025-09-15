@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
+import { CartProvider } from './context/CartContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
 import './App.css';
@@ -72,7 +73,9 @@ function MainApp() {
 function App() {
   return (
     <AuthProvider>
-      <MainApp />
+      <CartProvider>
+        <MainApp />
+      </CartProvider>
     </AuthProvider>
   );
 }
