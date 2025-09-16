@@ -110,21 +110,5 @@
       "phone": "+54 11 1234-5678"
     }
   ],
-  "cart": [
-    {
-      "id": "bccb",
-      "name": "Mochila Urban c/Porta Notebook",
-      "description": "La mochila Haversack Urban es la compañera ideal para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 25 litros y un bosillo interno porta notebook es perfecta para llevar todo lo necesario, ya sea para la universidad, el trabajo o actividades escolares. Su diseño urbano y versátil se adapta a diferentes entornos, asegurando que siempre luzcas bien mientras transportas tus pertenencias.",
-      "image": ".\\img\\15 B-Photoroom.jpg",
-      "stock": "13",
-      "price": "30000",
-      "category": "mochilas",
-      "tags": [
-        "Mochilas",
-        "Urban",
-        "PortaNotebook"
-      ],
-      "quantity": 1
-    }
-  ]
+  "cart": []
 }
