@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
-import { fetchProducts } from '../services/api'
-import './ProductList.css'
+import { useEffect, useState, useContext } from 'react';
+import { fetchProducts } from '../services/api';
+import { CartContext } from '../context/CartContext';
+import ProductCard from './ProductCard';
+import './ProductList.css';
 
 const formatPrice = (value) => {
   if (typeof value !== 'number') {
@@ -63,40 +65,28 @@ const ProductList = ({ category = null }) => {
   }
 
   if (!products.length) {
-    return <div className="product-list__feedback">No hay productos disponibles.</div>
+    return <div className="product-list__feedback">No hay productos disponibles.</div>;
   }
+
+  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
 
   return (
     <div className="product-list">
       {products.map((product) => {
-        const key = product.id || product.sku || product.title || product.name  
-        const oldPrice = product.oldPrice || product.price * 1.2
-
+        const key = product.id || product.sku || product.title || product.name;
+        const inCart = cartItems.some(item => item.id === product.id);
         return (
-          <article className="product-list__item" key={key}>
-            {product.discount && (
-              <span className="product-list__discount">En oferta</span>
-            )}
-            {product.image && (
-              <img
-                className="product-list__image"
-                src={product.image}
-                alt={product.title || product.name || 'Producto'}
-                loading="lazy"
-              />
-            )}
-            <div className="product-list__body">
-              <h3 className="product-list__title">{product.title || product.name}</h3>
-              <div className="product-list__prices">
-                <span className="product-list__price-current">{formatPrice(product.price)}</span>
-                <span className="product-list__price-old">{formatPrice(oldPrice)}</span>
-              </div>
-            </div>
-          </article>
-        )
+          <ProductCard
+            key={key}
+            product={product}
+            inCart={inCart}
+            onAdd={addToCart}
+            onRemove={removeFromCart}
+          />
+        );
       })}
     </div>
-  )
+  );
 }
 
 export default ProductList
