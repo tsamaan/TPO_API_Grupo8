@@ -1,17 +1,13 @@
+import { useState, useEffect } from 'react';
+import { updateProduct } from '../services/api';
+import './EditProductForm.css';
 
-import { useState } from 'react';
+const EditProductForm = ({ product: productToEdit, onProductUpdated, onCancel }) => {
+  const [product, setProduct] = useState(productToEdit);
 
-const ProductForm = () => {
-  const [product, setProduct] = useState({
-    id: 'a1b2c3d4-e5f6-7890-1234-567890abcdef', // ID de ejemplo
-    name: 'Producto de Ejemplo',
-    description: 'Esta es una descripción para el producto de ejemplo.',
-    images: [],
-    stock: 100,
-    price: 99.99,
-    tags: ['ejemplo', 'producto'],
-    category: 'Ejemplos'
-  });
+  useEffect(() => {
+    setProduct(productToEdit);
+  }, [productToEdit]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,22 +17,21 @@ const ProductForm = () => {
     }));
   };
 
-  const handleImageChange = (e) => {
-    setProduct(prevProduct => ({
-      ...prevProduct,
-      images: [...e.target.files]
-    }));
-  };
-
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log('Datos del producto enviados:', product);
-    alert('Datos del producto enviados. Revisa la consola.');
+    try {
+      await updateProduct(product.id, product);
+      alert('Producto actualizado con éxito');
+      onProductUpdated();
+    } catch (error) {
+      alert('Error al actualizar el producto');
+      console.error(error);
+    }
   };
 
   return (
     <form onSubmit={handleSubmit} className="product-form">
-      <h2>Formulario de Producto</h2>
+      <h2>Editar Producto</h2>
       
       <div className="form-group">
         <label htmlFor="id">ID del Producto</label>
@@ -73,17 +68,6 @@ const ProductForm = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="images">Imágenes</label>
-        <input
-          type="file"
-          id="images"
-          name="images"
-          onChange={handleImageChange}
-          multiple
-        />
-      </div>
-
-      <div className="form-group">
         <label htmlFor="stock">Stock</label>
         <input
           type="number"
@@ -109,17 +93,6 @@ const ProductForm = () => {
       </div>
 
       <div className="form-group">
-        <label htmlFor="tags">Tags (separados por comas)</label>
-        <input
-          type="text"
-          id="tags"
-          name="tags"
-          value={product.tags.join(', ')}
-          onChange={handleChange}
-        />
-      </div>
-
-      <div className="form-group">
         <label htmlFor="category">Categoría</label>
         <input
           type="text"
@@ -131,12 +104,23 @@ const ProductForm = () => {
         />
       </div>
 
+      <div className="form-group">
+        <label htmlFor="tags">Tags (separados por comas)</label>
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          value={Array.isArray(product.tags) ? product.tags.join(', ') : ''}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="form-actions">
-        <button type="submit">Guardar Producto</button>
-        <button type="button">Eliminar</button>
+        <button type="submit">Guardar Cambios</button>
+        <button type="button" onClick={onCancel}>Cancelar</button>
       </div>
     </form>
   );
 };
 
-export default ProductForm;
+export default EditProductForm;

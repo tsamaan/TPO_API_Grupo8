@@ -1,13 +1,5 @@
 const API_BASE_URL = 'http://localhost:3001'
 
-const unpackPayload = (payload, fallback) => {
-  if (payload && typeof payload === 'object' && 'data' in payload) {
-    return payload.data
-  }
-
-  return payload ?? fallback
-}
-
 export const fetchProducts = async (category = null) => {
   try {
     const url = category
@@ -19,9 +11,7 @@ export const fetchProducts = async (category = null) => {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const payload = await response.json()
-    const products = unpackPayload(payload, [])
-
+    const products = await response.json()
     return Array.isArray(products) ? products : []
   } catch (error) {
     console.error('Error fetching products:', error)
@@ -36,10 +26,127 @@ export const fetchProductById = async (id) => {
       throw new Error(`HTTP error! status: ${response.status}`)
     }
 
-    const payload = await response.json()
-    return unpackPayload(payload, null)
+    const product = await response.json()
+    return product
   } catch (error) {
     console.error('Error fetching product:', error)
+    throw error
+  }
+}
+
+export const createProduct = async (productData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/products`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productData),
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const product = await response.json()
+    return product
+  } catch (error) {
+    console.error('Error creating product:', error)
+    throw error
+  }
+}
+
+export const updateProduct = async (id, productData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(productData),
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const product = await response.json()
+    return product
+  } catch (error) {
+    console.error('Error updating product:', error)
+    throw error
+  }
+}
+
+export const deleteProduct = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`, {
+      method: 'DELETE',
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    return true
+  } catch (error) {
+    console.error('Error deleting product:', error)
+    throw error
+  }
+}
+
+export const fetchUsers = async () => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/users`)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const users = await response.json()
+    return Array.isArray(users) ? users : []
+  } catch (error) {
+    console.error('Error fetching users:', error)
+    throw error
+  }
+}
+
+export const fetchCart = async (userId = null) => {
+  try {
+    const url = userId
+      ? `${API_BASE_URL}/cart?userId=${userId}`
+      : `${API_BASE_URL}/cart`
+
+    const response = await fetch(url)
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const cart = await response.json()
+    return Array.isArray(cart) ? cart : []
+  } catch (error) {
+    console.error('Error fetching cart:', error)
+    throw error
+  }
+}
+
+export const createCartItem = async (cartData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cart`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(cartData),
+    })
+
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`)
+    }
+
+    const cartItem = await response.json()
+    return cartItem
+  } catch (error) {
+    console.error('Error creating cart item:', error)
     throw error
   }
 }
