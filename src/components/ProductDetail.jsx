@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { useCart } from '../context/CartContext';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
 import './ProductDetail.css';
@@ -24,6 +25,8 @@ const ProductDetail = () => {
   const [error, setError] = useState(null);
   const [cantidad, setCantidad] = useState(1);
   const [added, setAdded] = useState(false);
+
+  const { addToCart } = useCart();
 
   useEffect(() => {
     setLoading(true);
@@ -68,9 +71,18 @@ const ProductDetail = () => {
   };
 
   const handleAddCart = () => {
+    // Armar el objeto producto con los campos que espera el carrito
+    const productoParaCarrito = {
+      id: product.id,
+      name: nombre,
+      price: precio,
+      image: imagen,
+      stock: stock,
+      category: categoria
+    };
+    addToCart(productoParaCarrito, cantidad);
     setAdded(true);
     setTimeout(() => setAdded(false), 1200);
-    // Aquí deberías llamar a la función real de agregar al carrito
   };
 
   return (
