@@ -12,6 +12,7 @@ import CartSidebar from './components/CartSidebar'
 import ProductList from './components/ProductList'
 import ProductDetail from './components/ProductDetail'
 import ContactPage from './pages/ContactPage'
+import Footer from './components/Footer/Footer'
 import './App.css'
 
 function ProtectedScreen({ onLogout, user }) {
@@ -68,6 +69,7 @@ function MainApp() {
                   <Route path="/contacto" element={<ContactPage />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
+                <Footer />
               </div>
             </>
           }
