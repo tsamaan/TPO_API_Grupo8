@@ -117,12 +117,13 @@
 .product-list__discount {
   position: absolute;
   top: 1rem;
-  left: 0;
-  background-color: #ff0000;
-  color: white;
-  padding: 0.25rem 0.75rem;
-  font-size: 0.8rem;
-  font-weight: 500;
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(4, 1fr);
+  padding: 2rem;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
 }
 
 .product-list__image {
