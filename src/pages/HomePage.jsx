@@ -1,6 +1,7 @@
 import React from 'react';
 import Footer from '../components/Footer/Footer';
 import ProductList from '../components/ProductList';
+import MosaicCategory from '../components/MosaicCategory';
 import './HomePage.css';
 
 const HomePage = () => {
@@ -11,6 +12,7 @@ const HomePage = () => {
           <h1>Bienvenido a Haversack</h1>
           <p>Tu tienda online de confianza</p>
         </section>
+        <MosaicCategory />
         <section className="products-section">
           <div className="products-header">
             <h2>Productos destacados</h2>

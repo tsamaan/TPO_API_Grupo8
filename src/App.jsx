@@ -64,6 +64,9 @@ function MainApp() {
                   <Route path="/productos" element={<ProductList />} />
                   <Route path="/productos/categoria/:categoria" element={<ProductList />} />
                   <Route path="/productos/:id" element={<ProductDetail />} />
+                  <Route path="/mochilas" element={<ProductList category="mochilas" />} />
+                  <Route path="/materos" element={<ProductList category="materos" />} />
+                  <Route path="/bolsos" element={<ProductList category="bolsos" />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
               </div>
