@@ -4,6 +4,7 @@ import { AuthProvider, AuthContext } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
 import HomePage from './pages/HomePage';
 import LoginPage from './pages/LoginPage';
+import AdminDashboard from './pages/AdminDashboard';
 import './App.css';
 
 function ProtectedScreen({ onLogout, user }) {
@@ -54,6 +55,7 @@ function MainApp() {
         <Route path="/" element={<HomePage />} />
         <Route path="/login" element={<LoginPage />} />
         <Route path="/registro" element={<LoginPage />} />
+        <Route path="/admin" element={<AdminDashboard />} />
         <Route
           path="/dashboard"
           element={
