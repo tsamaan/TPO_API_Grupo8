@@ -1,0 +1,51 @@
+.mosaic-category-container {
+  display: flex;
+  gap: 48px;
+  justify-content: center;
+  margin: 48px 0;
+}
+
+
+.mosaic-card {
+  position: relative;
+  width: 380px;
+  height: 380px;
+  border-radius: 32px;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.25,.8,.25,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+
+.mosaic-card:hover {
+  transform: scale(1.04) rotate(-2deg);
+}
+
+
+/* Eliminado el título */
+
+
+.mosaic-img-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.mosaic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: none;
+}
