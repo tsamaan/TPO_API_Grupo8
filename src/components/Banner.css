@@ -1,0 +1,22 @@
+.banner {
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1200;
+  background: #b53c3c;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1rem;
+  text-align: center;
+  padding: 6px 0;
+  letter-spacing: 1px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+}
+
+@media (max-width: 768px) {
+  .banner {
+    font-size: 0.95rem;
+    padding: 8px 0;
+  }
+}

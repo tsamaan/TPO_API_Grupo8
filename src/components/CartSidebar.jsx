@@ -34,7 +34,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
                 <img src={item.image} alt={item.name} className="cart-item-img" />
                 <div className="cart-item-info">
                   <div className="cart-item-name">{item.name}</div>
-                  <div className="cart-item-price">${item.price.toLocaleString('es-AR')}</div>
+                  <div className="cart-item-price">
+                    ${typeof item.price === 'number' ? item.price.toLocaleString('es-AR') : '0'}
+                  </div>
                   <div className="cart-item-controls">
                     <button onClick={() => handleDecrease(item)} disabled={item.quantity <= 1}>-</button>
                     <span>{item.quantity}</span>
