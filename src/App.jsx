@@ -11,6 +11,8 @@ import CartWidget from './components/CartWidget'
 import CartSidebar from './components/CartSidebar'
 import ProductList from './components/ProductList'
 import ProductDetail from './components/ProductDetail'
+import ContactPage from './pages/ContactPage'
+import Footer from './components/Footer/Footer'
 import './App.css'
 
 function ProtectedScreen({ onLogout, user }) {
@@ -64,11 +66,13 @@ function MainApp() {
                   <Route path="/productos" element={<ProductList />} />
                   <Route path="/productos/categoria/:categoria" element={<ProductList />} />
                   <Route path="/productos/:id" element={<ProductDetail />} />
+                  <Route path="/contacto" element={<ContactPage />} />
                   <Route path="/mochilas" element={<ProductList category="mochilas" />} />
                   <Route path="/materos" element={<ProductList category="materos" />} />
                   <Route path="/bolsos" element={<ProductList category="bolsos" />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>
+                <Footer />
               </div>
             </>
           }

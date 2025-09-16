@@ -1,5 +1,4 @@
 import React from 'react';
-import Footer from '../components/Footer/Footer';
 import ProductList from '../components/ProductList';
 import MosaicCategory from '../components/MosaicCategory';
 import './HomePage.css';
@@ -21,7 +20,6 @@ const HomePage = () => {
           <ProductList />
         </section>
       </main>
-      <Footer />
     </div>
   );
 };
