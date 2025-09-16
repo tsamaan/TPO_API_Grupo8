@@ -1,0 +1,44 @@
+.filter-widget {
+  position: fixed;
+  top: 50%;
+  right: 20px;
+  transform: translateY(-50%);
+  z-index: 1001;
+  background: #007bff;
+  border-radius: 50%;
+  box-shadow: 0 3px 8px rgba(0, 123, 255, 0.4);
+  padding: 0;
+  width: 48px;
+  height: 48px;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.filter-widget:hover {
+  background: #0056b3;
+  transform: translateY(-50%) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 123, 255, 0.6);
+}
+
+.filter-icon-main {
+  width: 20px;
+  height: 20px;
+  color: white;
+}
+
+@media (max-width: 768px) {
+  .filter-widget {
+    width: 42px;
+    height: 42px;
+    right: 15px;
+  }
+
+  .filter-icon-main {
+    width: 18px;
+    height: 18px;
+  }
+}
