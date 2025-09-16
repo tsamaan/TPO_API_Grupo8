@@ -7,12 +7,9 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminDashboard from './pages/AdminDashboard';
 import Navbar from './components/Navbar/Navbar';
-<<<<<<< HEAD
 import CartWidget from './components/Carrito/CartWidget';
-=======
-import CartWidget from './components/CartWidget';
+
 import CartSidebar from './components/CartSidebar';
->>>>>>> origin/teo
 import './App.css';
 
 function ProtectedScreen({ onLogout, user }) {
