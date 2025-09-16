@@ -72,27 +72,8 @@ const ProductList = ({ category: propCategory = null }) => {
     return <div className="product-list__feedback">No hay productos disponibles.</div>;
   }
 
-  const categorias = [
-    { nombre: 'Mochilas', valor: 'mochilas' },
-    { nombre: 'Bolsos', valor: 'bolsos' },
-    { nombre: 'Materos', valor: 'materos' },
-    { nombre: 'Accesorios', valor: 'accesorios' },
-  ];
-
   return (
     <div>
-      <div className="category-nav" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
-        <Link to="/productos" style={{ fontWeight: !category ? 'bold' : 'normal' }}>Todos</Link>
-        {categorias.map(cat => (
-          <Link
-            key={cat.valor}
-            to={`/productos/categoria/${cat.valor}`}
-            style={{ fontWeight: category === cat.valor ? 'bold' : 'normal' }}
-          >
-            {cat.nombre}
-          </Link>
-        ))}
-      </div>
       <div className="product-list">
         {products.map((product) => {
           const key = product.id || product.sku || product.title || product.name;
