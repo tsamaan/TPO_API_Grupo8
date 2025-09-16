@@ -1,7 +1,6 @@
 import React from 'react';
 import Footer from '../components/Footer/Footer';
 import ProductList from '../components/ProductList';
-import Banner from '../components/Banner';
 import ImageCarousel from '../components/ImageCarousel';
 import BannerSwiper from '../components/BannerSwiper';
 import './HomePage.css';
