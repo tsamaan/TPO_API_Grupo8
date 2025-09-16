@@ -25,18 +25,8 @@ const LoginPage = () => {
   }
 
   return (
-    <div style={{ minHeight: '100vh', display: 'flex', justifyContent: 'center', alignItems: 'center', background: '#f5f5f5' }}>
-      {showRegister ? (
-        <RegisterForm onShowLogin={() => {
-          setShowRegister(false);
-          navigate('/login');
-        }} />
-      ) : (
-        <LoginForm onShowRegister={() => {
-          setShowRegister(true);
-          navigate('/registro');
-        }} />
-      )}
+    <div>
+      <LoginForm onShowRegister={() => navigate('/registro')} />
     </div>
   );
 };
