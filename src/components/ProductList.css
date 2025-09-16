@@ -3,6 +3,19 @@
   margin-left: 250px;
 }
 
+/* Results Info */
+.results-info {
+  padding: 1rem 2rem;
+  background-color: #f8f9fa;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.results-count {
+  color: #666;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
 /* Product List Header */
 .product-list-header {
   display: flex;

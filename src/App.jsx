@@ -8,6 +8,7 @@ import RegisterPage from './pages/RegisterPage'
 import AdminDashboard from './pages/AdminDashboard'
 import Navbar from './components/Navbar/Navbar'
 import CartWidget from './components/CartWidget'
+import FilterWidget from './components/FilterWidget'
 import CartSidebar from './components/CartSidebar'
 import ProductList from './components/ProductList'
 import ProductDetail from './components/ProductDetail'
@@ -26,6 +27,8 @@ function ProtectedScreen({ onLogout, user }) {
 function MainApp() {
   const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext)
   const [cartOpen, setCartOpen] = useState(false)
+  const [filterOpen, setFilterOpen] = useState(false)
+  const [productCount, setProductCount] = useState(0)
 
   const handleLogout = () => {
     setIsAuthenticated(false)
@@ -34,6 +37,9 @@ function MainApp() {
 
   const handleCartClick = () => setCartOpen(true)
   const handleCartClose = () => setCartOpen(false)
+  const handleFilterClick = () => setFilterOpen(true)
+  const handleFilterClose = () => setFilterOpen(false)
+  const handleProductCountChange = (count) => setProductCount(count)
 
   return (
     <Router>
@@ -46,6 +52,7 @@ function MainApp() {
             <>
               <Navbar />
               <CartWidget onMenuClick={handleCartClick} />
+              <FilterWidget onFilterClick={handleFilterClick} productCount={productCount} />
               <CartSidebar isOpen={cartOpen} onClose={handleCartClose} />
               <div className="main-with-navbar">
                 <Routes>
@@ -61,8 +68,8 @@ function MainApp() {
                       )
                     }
                   />
-                  <Route path="/productos" element={<ProductList />} />
-                  <Route path="/productos/categoria/:categoria" element={<ProductList />} />
+                  <Route path="/productos" element={<ProductList filterOpen={filterOpen} onFilterClose={handleFilterClose} onProductCountChange={handleProductCountChange} />} />
+                  <Route path="/productos/categoria/:categoria" element={<ProductList filterOpen={filterOpen} onFilterClose={handleFilterClose} onProductCountChange={handleProductCountChange} />} />
                   <Route path="/productos/:id" element={<ProductDetail />} />
                   <Route path="*" element={<Navigate to="/" replace />} />
                 </Routes>

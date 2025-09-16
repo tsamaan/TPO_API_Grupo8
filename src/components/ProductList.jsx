@@ -6,14 +6,13 @@ import ProductCard from './ProductCard';
 import FilterSidebar from './FilterSidebar';
 import './ProductList.css';
 
-const ProductList = ({ category: propCategory = null }) => {
+const ProductList = ({ category: propCategory = null, filterOpen = false, onFilterClose, onProductCountChange }) => {
   const params = useParams();
   const category = params.categoria || propCategory;
   const [allProducts, setAllProducts] = useState([]);
   const [filteredProducts, setFilteredProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
-  const [filterSidebarOpen, setFilterSidebarOpen] = useState(false);
   const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
   useEffect(() => {
@@ -29,12 +28,20 @@ const ProductList = ({ category: propCategory = null }) => {
           const productsArray = Array.isArray(data) ? data : [];
           setAllProducts(productsArray);
           setFilteredProducts(productsArray);
+          // Reportar el contador inicial de productos
+          if (onProductCountChange) {
+            onProductCountChange(productsArray.length);
+          }
         }
       } catch (err) {
         if (isSubscribed) {
           setError(err.message || 'Error al cargar los productos');
           setAllProducts([]);
           setFilteredProducts([]);
+          // Resetear contador en caso de error
+          if (onProductCountChange) {
+            onProductCountChange(0);
+          }
         }
       } finally {
         if (isSubscribed) {
@@ -105,6 +112,11 @@ const ProductList = ({ category: propCategory = null }) => {
     }
 
     setFilteredProducts(result);
+
+    // Reportar el contador de productos al componente padre
+    if (onProductCountChange) {
+      onProductCountChange(result.length);
+    }
   };
 
   const handleFilterChange = (filters) => {
@@ -127,48 +139,23 @@ const ProductList = ({ category: propCategory = null }) => {
     return <div className="product-list__feedback">No hay productos disponibles.</div>;
   }
 
-  const categorias = [
-    { nombre: 'Mochilas', valor: 'mochilas' },
-    { nombre: 'Bolsos', valor: 'bolsos' },
-    { nombre: 'Materos', valor: 'materos' },
-    { nombre: 'Accesorios', valor: 'accesorios' },
-  ];
-
   return (
     <div className="product-list-container">
-      {/* Header con navegación de categorías y botón de filtros */}
-      <div className="product-list-header">
-        <div className="category-nav">
-          <Link to="/productos" className={!category ? 'active' : ''}>Todos</Link>
-          {categorias.map(cat => (
-            <Link
-              key={cat.valor}
-              to={`/productos/categoria/${cat.valor}`}
-              className={category === cat.valor ? 'active' : ''}
-            >
-              {cat.nombre}
-            </Link>
-          ))}
-        </div>
-        
-        <div className="filter-controls">
-          <button 
-            className="filter-button"
-            onClick={() => setFilterSidebarOpen(true)}
-          >
-            <span>Filtros</span>
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-              <polygon points="22 3 2 3 10 12.46 10 19 14 21 14 12.46 22 3"></polygon>
-            </svg>
-          </button>
-          
-          <div className="results-count">
-            {filteredProducts.length} producto{filteredProducts.length !== 1 ? 's' : ''} encontrado{filteredProducts.length !== 1 ? 's' : ''}
-          </div>
-        </div>
-      </div>
-
       {/* Lista de productos */}
+                <div className="no-products-found">
+            <p>No se encontraron productos que coincidan con los filtros seleccionados.</p>
+            <button 
+              className="clear-filters-link"
+              onClick={() => applyFilters({
+                sortBy: 'name',
+                selectedColors: [],
+                selectedTags: [],
+                priceRange: { min: '', max: '' }
+              })}
+            >
+              Limpiar filtros
+            </button>
+          </div>
       <div className="product-list">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => {
@@ -205,8 +192,8 @@ const ProductList = ({ category: propCategory = null }) => {
 
       {/* Sidebar de filtros */}
       <FilterSidebar
-        isOpen={filterSidebarOpen}
-        onClose={() => setFilterSidebarOpen(false)}
+        isOpen={filterOpen}
+        onClose={onFilterClose}
         products={allProducts}
         onFilterChange={handleFilterChange}
       />
