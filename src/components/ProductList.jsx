@@ -17,43 +17,44 @@ const formatPrice = (value) => {
 }
 
 const ProductList = ({ category = null }) => {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
   useEffect(() => {
-    let isSubscribed = true
+    let isSubscribed = true;
 
     const loadProducts = async () => {
-      setLoading(true)
-      setError(null)
+      setLoading(true);
+      setError(null);
 
       try {
-        const data = await fetchProducts(category)
+        const data = await fetchProducts(category);
         if (isSubscribed) {
-          setProducts(Array.isArray(data) ? data : [])
+          setProducts(Array.isArray(data) ? data : []);
         }
       } catch (err) {
         if (isSubscribed) {
-          setError(err.message || 'Error al cargar los productos')
-          setProducts([])
+          setError(err.message || 'Error al cargar los productos');
+          setProducts([]);
         }
       } finally {
         if (isSubscribed) {
-          setLoading(false)
+          setLoading(false);
         }
       }
-    }
+    };
 
-    loadProducts()
+    loadProducts();
 
     return () => {
-      isSubscribed = false
-    }
-  }, [category])
+      isSubscribed = false;
+    };
+  }, [category]);
 
   if (loading) {
-    return <div className="product-list__feedback">Cargando productos...</div>
+    return <div className="product-list__feedback">Cargando productos...</div>;
   }
 
   if (error) {
@@ -61,20 +62,18 @@ const ProductList = ({ category = null }) => {
       <div className="product-list__feedback product-list__feedback--error" role="alert">
         {error}
       </div>
-    )
+    );
   }
 
   if (!products.length) {
     return <div className="product-list__feedback">No hay productos disponibles.</div>;
   }
 
-  const { cartItems, addToCart, removeFromCart } = useContext(CartContext);
-
   return (
     <div className="product-list">
       {products.map((product) => {
         const key = product.id || product.sku || product.title || product.name;
-        const inCart = cartItems.some(item => item.id === product.id);
+        const inCart = cart.some(item => item.id === product.id);
         return (
           <ProductCard
             key={key}
