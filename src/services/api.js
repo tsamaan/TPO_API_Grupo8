@@ -1,4 +1,33 @@
+// Eliminar producto del carrito
+export const deleteCartItem = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/cart/${id}`, {
+      method: 'DELETE',
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return true;
+  } catch (error) {
+    console.error('Error deleting cart item:', error);
+    throw error;
+  }
+}
 const API_BASE_URL = 'http://localhost:3001'
+
+export const getProductById = async (id) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/products/${id}`);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    const product = await response.json();
+    return product;
+  } catch (error) {
+    console.error('Error fetching product:', error);
+    throw error;
+  }
+};
 
 export const fetchProducts = async (category = null) => {
   try {

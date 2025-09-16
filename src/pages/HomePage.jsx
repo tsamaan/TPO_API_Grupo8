@@ -1,5 +1,4 @@
 import React from 'react';
-import Navbar from '../components/Navbar/Navbar';
 import Footer from '../components/Footer/Footer';
 import ProductList from '../components/ProductList';
 import './HomePage.css';
@@ -7,7 +6,6 @@ import './HomePage.css';
 const HomePage = () => {
   return (
     <div className="home-page">
-      <Navbar />
       <main className="main-content">
         <section className="hero-section">
           <h1>Bienvenido a Haversack</h1>

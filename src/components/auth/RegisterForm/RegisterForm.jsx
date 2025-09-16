@@ -1,21 +1,19 @@
+
 import React, { useState, useContext } from "react";
 import { AuthContext } from "../../../context/AuthContext";
-import "./RegisterForm.css";
-
-
+import "../LoginForm/LoginForm.css";
 
 const RegisterForm = ({ onShowLogin }) => {
-  const { register, error } = useContext(AuthContext);
+  const { register, error, isAuthenticated } = useContext(AuthContext);
   const [form, setForm] = useState({
     nombre: "",
     apellido: "",
     email: "",
-    usuario: "",
+    phone: "",
     password: "",
     confirmPassword: ""
   });
   const [localError, setLocalError] = useState("");
-  const [success, setSuccess] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -25,7 +23,7 @@ const RegisterForm = ({ onShowLogin }) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     // Validaciones
-    if (!form.nombre || !form.apellido || !form.email || !form.usuario || !form.password || !form.confirmPassword) {
+    if (!form.nombre || !form.apellido || !form.email || !form.phone || !form.password || !form.confirmPassword) {
       setLocalError("Todos los campos son obligatorios");
       return;
     }
@@ -34,91 +32,53 @@ const RegisterForm = ({ onShowLogin }) => {
       return;
     }
     setLocalError("");
-    const ok = register(form);
-    if (ok) {
-      setSuccess(true);
-      setTimeout(() => {
-        setSuccess(false);
-        onShowLogin();
-      }, 1500);
-    }
+    register(form);
   };
 
   return (
-    <div className="register-container">
-      <h2>Crear cuenta</h2>
-      <form className="register-form" onSubmit={handleSubmit}>
-        <label htmlFor="nombre">Nombre</label>
-        <input
-          id="nombre"
-          name="nombre"
-          type="text"
-          value={form.nombre}
-          onChange={handleChange}
-          placeholder="Tu nombre"
-          required
-        />
-        <label htmlFor="apellido">Apellido</label>
-        <input
-          id="apellido"
-          name="apellido"
-          type="text"
-          value={form.apellido}
-          onChange={handleChange}
-          placeholder="Tu apellido"
-          required
-        />
-        <label htmlFor="email">Email</label>
-        <input
-          id="email"
-          name="email"
-          type="email"
-          value={form.email}
-          onChange={handleChange}
-          placeholder="ejemplo@email.com"
-          required
-        />
-        <label htmlFor="usuario">Usuario</label>
-        <input
-          id="usuario"
-          name="usuario"
-          type="text"
-          value={form.usuario}
-          onChange={handleChange}
-          placeholder="Nombre de usuario"
-          required
-        />
-        <label htmlFor="password">Contraseña</label>
-        <input
-          id="password"
-          name="password"
-          type="password"
-          value={form.password}
-          onChange={handleChange}
-          placeholder="Contraseña"
-          required
-        />
-        <label htmlFor="confirmPassword">Repetir contraseña</label>
-        <input
-          id="confirmPassword"
-          name="confirmPassword"
-          type="password"
-          value={form.confirmPassword}
-          onChange={handleChange}
-          placeholder="Repetir contraseña"
-          required
-        />
-  {localError && <div className="register-error">{localError}</div>}
-  {error && !localError && <div className="register-error">{error}</div>}
-  {success && <div className="login-success">¡Registro exitoso! Ahora podés iniciar sesión.</div>}
-        <button type="submit">Registrarme</button>
+    <div className="login-form-wrapper">
+      <form className="login-form-card" onSubmit={handleSubmit}>
+        <div className="login-form-title">Crear cuenta</div>
+        <div className="login-form-row">
+          <div className="login-form-group" style={{ flex: 1 }}>
+            <label htmlFor="nombre" className="login-form-label">Nombre</label>
+            <input id="nombre" name="nombre" type="text" className="login-form-input" value={form.nombre} onChange={handleChange} placeholder="Nombre" required />
+          </div>
+          <div className="login-form-group" style={{ flex: 1 }}>
+            <label htmlFor="apellido" className="login-form-label">Apellido</label>
+            <input id="apellido" name="apellido" type="text" className="login-form-input" value={form.apellido} onChange={handleChange} placeholder="Apellido" required />
+          </div>
+        </div>
+        <div className="login-form-group">
+          <label htmlFor="email" className="login-form-label">Email</label>
+          <input id="email" name="email" type="email" className="login-form-input" value={form.email} onChange={handleChange} placeholder="Email" required />
+        </div>
+        <div className="login-form-group">
+          <label htmlFor="phone" className="login-form-label">Teléfono</label>
+          <input id="phone" name="phone" type="text" className="login-form-input" value={form.phone} onChange={handleChange} placeholder="Teléfono" required />
+        </div>
+        <div className="login-form-group">
+          <label htmlFor="password" className="login-form-label">Contraseña</label>
+          <input id="password" name="password" type="password" className="login-form-input" value={form.password} onChange={handleChange} placeholder="Contraseña" required />
+        </div>
+        <div className="login-form-group">
+          <label htmlFor="confirmPassword" className="login-form-label">Repetir contraseña</label>
+          <input id="confirmPassword" name="confirmPassword" type="password" className="login-form-input" value={form.confirmPassword} onChange={handleChange} placeholder="Repetir contraseña" required />
+        </div>
+        <div className="login-form-footer">
+          <button type="submit" className="login-form-btn">Registrarse</button>
+        </div>
+        <div className="login-form-bottom">
+          <span>¿Ya tenés cuenta?</span>
+          <button type="button" className="login-form-link" onClick={onShowLogin}>Iniciar sesión</button>
+        </div>
+        {localError && <div className="login-form-error">{localError}</div>}
+        {error && !localError && <div className="login-form-error">{error}</div>}
+        {isAuthenticated && <div className="login-form-success">¡Registro exitoso!</div>}
       </form>
-      <div className="register-footer">
-        <span>¿Ya tenés cuenta?</span>
-        <button className="login-btn" type="button" onClick={onShowLogin}>Iniciar sesión</button>
-      </div>
     </div>
   );
 };
+
 
 export default RegisterForm;

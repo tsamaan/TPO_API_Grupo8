@@ -1,6 +1,9 @@
-import { useEffect, useState } from 'react'
-import { fetchProducts } from '../services/api'
-import './ProductList.css'
+import { useEffect, useState, useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
+import { fetchProducts } from '../services/api';
+import { CartContext } from '../context/CartContext';
+import ProductCard from './ProductCard';
+import './ProductList.css';
 
 const formatPrice = (value) => {
   if (typeof value !== 'number') {
@@ -14,44 +17,47 @@ const formatPrice = (value) => {
   }).format(value)
 }
 
-const ProductList = ({ category = null }) => {
-  const [products, setProducts] = useState([])
-  const [loading, setLoading] = useState(true)
-  const [error, setError] = useState(null)
+const ProductList = ({ category: propCategory = null }) => {
+  const params = useParams();
+  const category = params.categoria || propCategory;
+  const [products, setProducts] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+  const { cart, addToCart, removeFromCart } = useContext(CartContext);
 
   useEffect(() => {
-    let isSubscribed = true
+    let isSubscribed = true;
 
     const loadProducts = async () => {
-      setLoading(true)
-      setError(null)
+      setLoading(true);
+      setError(null);
 
       try {
-        const data = await fetchProducts(category)
+        const data = await fetchProducts(category);
         if (isSubscribed) {
-          setProducts(Array.isArray(data) ? data : [])
+          setProducts(Array.isArray(data) ? data : []);
         }
       } catch (err) {
         if (isSubscribed) {
-          setError(err.message || 'Error al cargar los productos')
-          setProducts([])
+          setError(err.message || 'Error al cargar los productos');
+          setProducts([]);
         }
       } finally {
         if (isSubscribed) {
-          setLoading(false)
+          setLoading(false);
         }
       }
-    }
+    };
 
-    loadProducts()
+    loadProducts();
 
     return () => {
-      isSubscribed = false
-    }
-  }, [category])
+      isSubscribed = false;
+    };
+  }, [category]);
 
   if (loading) {
-    return <div className="product-list__feedback">Cargando productos...</div>
+    return <div className="product-list__feedback">Cargando productos...</div>;
   }
 
   if (error) {
@@ -59,44 +65,52 @@ const ProductList = ({ category = null }) => {
       <div className="product-list__feedback product-list__feedback--error" role="alert">
         {error}
       </div>
-    )
+    );
   }
 
   if (!products.length) {
-    return <div className="product-list__feedback">No hay productos disponibles.</div>
+    return <div className="product-list__feedback">No hay productos disponibles.</div>;
   }
 
-  return (
-    <div className="product-list">
-      {products.map((product) => {
-        const key = product.id || product.sku || product.title || product.name  
-        const oldPrice = product.oldPrice || product.price * 1.2
+  const categorias = [
+    { nombre: 'Mochilas', valor: 'mochilas' },
+    { nombre: 'Bolsos', valor: 'bolsos' },
+    { nombre: 'Materos', valor: 'materos' },
+    { nombre: 'Accesorios', valor: 'accesorios' },
+  ];
 
-        return (
-          <article className="product-list__item" key={key}>
-            {product.discount && (
-              <span className="product-list__discount">En oferta</span>
-            )}
-            {product.image && (
-              <img
-                className="product-list__image"
-                src={product.image}
-                alt={product.title || product.name || 'Producto'}
-                loading="lazy"
+  return (
+    <div>
+      <div className="category-nav" style={{ display: 'flex', gap: '1rem', marginBottom: '2rem', justifyContent: 'center' }}>
+        <Link to="/productos" style={{ fontWeight: !category ? 'bold' : 'normal' }}>Todos</Link>
+        {categorias.map(cat => (
+          <Link
+            key={cat.valor}
+            to={`/productos/categoria/${cat.valor}`}
+            style={{ fontWeight: category === cat.valor ? 'bold' : 'normal' }}
+          >
+            {cat.nombre}
+          </Link>
+        ))}
+      </div>
+      <div className="product-list">
+        {products.map((product) => {
+          const key = product.id || product.sku || product.title || product.name;
+          const inCart = cart.some(item => item.id === product.id);
+          return (
+            <Link key={key} to={`/productos/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <ProductCard
+                product={product}
+                inCart={inCart}
+                onAdd={addToCart}
+                onRemove={removeFromCart}
               />
-            )}
-            <div className="product-list__body">
-              <h3 className="product-list__title">{product.title || product.name}</h3>
-              <div className="product-list__prices">
-                <span className="product-list__price-current">{formatPrice(product.price)}</span>
-                <span className="product-list__price-old">{formatPrice(oldPrice)}</span>
-              </div>
-            </div>
-          </article>
-        )
-      })}
+            </Link>
+          );
+        })}
+      </div>
     </div>
-  )
+  );
 }
 
 export default ProductList

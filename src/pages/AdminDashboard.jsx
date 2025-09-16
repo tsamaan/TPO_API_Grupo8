@@ -63,7 +63,7 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="admin-dashboard">
+    <main className="admin-dashboard">
       <h1>Panel de Administración</h1>
 
       {editingProduct ? (
@@ -108,7 +108,7 @@ const AdminDashboard = () => {
           </tbody>
         </table>
       </div>
-    </div>
+    </main>
   );
 };
 
