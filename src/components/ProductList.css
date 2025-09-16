@@ -1,3 +1,15 @@
+/* Product List Grid */
+.product-list {
+  display: grid;
+  gap: 2rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  justify-items: center;
+  align-items: stretch;
+  padding: 2rem;
+  max-width: 1200px;
+  margin-right: auto;
+  margin-left: auto;
+}
 
 /* Results Info */
 .results-info {

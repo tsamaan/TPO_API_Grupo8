@@ -14,12 +14,12 @@ const Footer = () => {
             </ul>
           </div>
 
-          <div className="footer-col footer-col--center">
+          {/* <div className="footer-col footer-col--center">
             <div className="newsletter">
               <input type="text" placeholder="Suscribite al newsletter..." aria-label="newsletter" />
               <button aria-label="subscribe">+</button>
             </div>
-          </div>
+          </div> */}
 
           <div className="footer-col footer-col--contact">
             <h4>INSTAGRAM</h4>
