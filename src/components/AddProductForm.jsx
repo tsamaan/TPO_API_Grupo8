@@ -9,7 +9,8 @@ const AddProductForm = ({ onProductAdded }) => {
     image: '',
     stock: 0,
     price: 0,
-    category: ''
+    category: '',
+    tags: []
   });
 
   const [errors, setErrors] = useState({});
@@ -34,7 +35,7 @@ const AddProductForm = ({ onProductAdded }) => {
     const { name, value } = e.target;
     setProduct(prevProduct => ({
       ...prevProduct,
-      [name]: value
+      [name]: name === 'tags' ? value.split(',').map(tag => tag.trim()) : value
     }));
   };
 
@@ -51,7 +52,8 @@ const AddProductForm = ({ onProductAdded }) => {
           image: '',
           stock: 0,
           price: 0,
-          category: ''
+          category: '',
+          tags: []
         });
       } catch (error) {
         alert('Error al crear el producto');
@@ -143,6 +145,17 @@ const AddProductForm = ({ onProductAdded }) => {
           onChange={handleChange}
         />
         {errors.category && <p className="error">{errors.category}</p>}
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="tags">Tags (separados por comas)</label>
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          value={Array.isArray(product.tags) ? product.tags.join(', ') : ''}
+          onChange={handleChange}
+        />
       </div>
 
       <div className="form-actions">

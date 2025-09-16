@@ -104,6 +104,17 @@ const EditProductForm = ({ product: productToEdit, onProductUpdated, onCancel })
         />
       </div>
 
+      <div className="form-group">
+        <label htmlFor="tags">Tags (separados por comas)</label>
+        <input
+          type="text"
+          id="tags"
+          name="tags"
+          value={Array.isArray(product.tags) ? product.tags.join(', ') : ''}
+          onChange={handleChange}
+        />
+      </div>
+
       <div className="form-actions">
         <button type="submit">Guardar Cambios</button>
         <button type="button" onClick={onCancel}>Cancelar</button>
