@@ -8,43 +8,41 @@ import RegisterPage from './pages/RegisterPage';
 import AdminDashboard from './pages/AdminDashboard';
 import Navbar from './components/Navbar/Navbar';
 import CartWidget from './components/Carrito/CartWidget';
-
 import CartSidebar from './components/CartSidebar';
+import ProductList from './components/ProductList'
+import ProductDetail from './components/ProductDetail'
+import ContactPage from './pages/ContactPage'
+import Footer from './components/Footer/Footer'
 import './App.css';
+
 
 function ProtectedScreen({ onLogout, user }) {
   return (
     <div className="login-container">
-      <h2>¡Bienvenido, {user?.nombre || user?.usuario || 'usuario'}!</h2>
-      <p style={{margin: '1.5rem 0'}}>Ya estás autenticado en Haversack.</p>
-      <button onClick={onLogout} style={{marginTop: '1rem'}}>Cerrar sesión</button>
+      <h2>Bienvenido, {user?.nombre || user?.usuario || 'usuario'}!</h2>
+      <p style={{ margin: '1.5rem 0' }}>Ya estas autenticado en Haversack.</p>
+      <button onClick={onLogout} style={{ marginTop: '1rem' }}>Cerrar sesion</button>
     </div>
-  );
+  )
 }
 
 function MainApp() {
-  const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
-  const [cartOpen, setCartOpen] = useState(false);
+  const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext)
+  const [cartOpen, setCartOpen] = useState(false)
 
   const handleLogout = () => {
-    setIsAuthenticated(false);
-    setUser(null);
-  };
+    setIsAuthenticated(false)
+    setUser(null)
+  }
 
-  const handleCartClick = () => setCartOpen(true);
-  const handleCartClose = () => setCartOpen(false);
+  const handleCartClick = () => setCartOpen(true)
+  const handleCartClose = () => setCartOpen(false)
 
   return (
     <Router>
       <Routes>
-        <Route
-          path="/login"
-          element={<LoginPage />}
-        />
-        <Route
-          path="/registro"
-          element={<RegisterPage />}
-        />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/registro" element={<RegisterPage />} />
         <Route
           path="*"
           element={
@@ -52,27 +50,35 @@ function MainApp() {
               <Navbar />
               <CartWidget onMenuClick={handleCartClick} />
               <CartSidebar isOpen={cartOpen} onClose={handleCartClose} />
-              <Routes>
-                <Route path="/" element={<HomePage />} />
-                <Route path="/admin" element={<AdminDashboard />} />
-                <Route
-                  path="/dashboard"
-                  element={
-                    isAuthenticated ? (
-                      <ProtectedScreen onLogout={handleLogout} user={user} />
-                    ) : (
-                      <Navigate to="/login" replace />
-                    )
-                  }
-                />
-                <Route path="*" element={<Navigate to="/" replace />} />
-              </Routes>
+                <Routes>
+                  <Route path="/" element={<HomePage />} />
+                  <Route path="/admin" element={<AdminDashboard />} />
+                  <Route
+                    path="/dashboard"
+                    element={
+                      isAuthenticated ? (
+                        <ProtectedScreen onLogout={handleLogout} user={user} />
+                      ) : (
+                        <Navigate to="/login" replace />
+                      )
+                    }
+                  />
+                  <Route path="/productos" element={<ProductList />} />
+                  <Route path="/productos/categoria/:categoria" element={<ProductList />} />
+                  <Route path="/productos/:id" element={<ProductDetail />} />
+                  <Route path="/contacto" element={<ContactPage />} />
+                  <Route path="/mochilas" element={<ProductList category="mochilas" />} />
+                  <Route path="/materos" element={<ProductList category="materos" />} />
+                  <Route path="/bolsos" element={<ProductList category="bolsos" />} />
+                  <Route path="*" element={<Navigate to="/" replace />} />
+                </Routes>
+                <Footer />
             </>
           }
         />
       </Routes>
     </Router>
-  );
+  )
 }
 
 function App() {
@@ -82,7 +88,7 @@ function App() {
         <MainApp />
       </CartProvider>
     </AuthProvider>
-  );
+  )
 }
 
-export default App;
+export default App

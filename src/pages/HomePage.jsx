@@ -1,8 +1,8 @@
 import React from 'react';
-import Footer from '../components/Footer/Footer';
 import ProductList from '../components/ProductList';
 import ImageCarousel from '../components/ImageCarousel';
 import BannerSwiper from '../components/BannerSwiper';
+import MosaicCategory from '../components/MosaicCategory';
 import './HomePage.css';
 
 const images = [
@@ -22,7 +22,7 @@ const HomePage = () => {
         
         <BannerSwiper promos={promos} />
         <ImageCarousel images={images} />
-
+        <MosaicCategory />
         <section className="products-section">
           <div className="products-header">
             <h2>Productos destacados</h2>
@@ -31,7 +31,6 @@ const HomePage = () => {
           <ProductList />
         </section>
       </main>
-      <Footer />
     </div>
   );
 };

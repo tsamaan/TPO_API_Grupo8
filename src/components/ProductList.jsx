@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext } from 'react';
+import { useParams, Link } from 'react-router-dom';
 import { fetchProducts } from '../services/api';
 import { CartContext } from '../context/CartContext';
 import ProductCard from './ProductCard';
@@ -16,7 +17,9 @@ const formatPrice = (value) => {
   }).format(value)
 }
 
-const ProductList = ({ category = null }) => {
+const ProductList = ({ category: propCategory = null }) => {
+  const params = useParams();
+  const category = params.categoria || propCategory;
   const [products, setProducts] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -70,20 +73,23 @@ const ProductList = ({ category = null }) => {
   }
 
   return (
-    <div className="product-list">
-      {products.map((product) => {
-        const key = product.id || product.sku || product.title || product.name;
-        const inCart = cart.some(item => item.id === product.id);
-        return (
-          <ProductCard
-            key={key}
-            product={product}
-            inCart={inCart}
-            onAdd={addToCart}
-            onRemove={removeFromCart}
-          />
-        );
-      })}
+    <div>
+      <div className="product-list">
+        {products.map((product) => {
+          const key = product.id || product.sku || product.title || product.name;
+          const inCart = cart.some(item => item.id === product.id);
+          return (
+            <Link key={key} to={`/productos/${product.id}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+              <ProductCard
+                product={product}
+                inCart={inCart}
+                onAdd={addToCart}
+                onRemove={removeFromCart}
+              />
+            </Link>
+          );
+        })}
+      </div>
     </div>
   );
 }

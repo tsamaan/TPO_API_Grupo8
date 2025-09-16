@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import { fetchCart, createCartItem } from '../services/api';
+import { fetchCart, createCartItem, deleteCartItem } from '../services/api';
 
 // Crear el contexto
 export const CartContext = createContext();
@@ -34,25 +34,32 @@ export const CartProvider = ({ children }) => {
 
     // Agregar producto al carrito y a la API (ahora síncrono para evitar problemas de renderizado)
     const addToCart = (product, quantity = 1) => {
-        if (!product.stock || product.stock < quantity) {
-            throw new Error('No hay suficiente stock disponible');
-        }
         setCart(currentCart => {
             const existingProductIndex = currentCart.findIndex(item => item.id === product.id);
             if (existingProductIndex >= 0) {
                 const updatedCart = [...currentCart];
-                updatedCart[existingProductIndex].quantity += quantity;
+                const newQuantity = updatedCart[existingProductIndex].quantity + quantity;
+                if (newQuantity <= 0) {
+                    // Eliminar producto si la cantidad llega a 0
+                    return updatedCart.filter((_, idx) => idx !== existingProductIndex);
+                }
+                updatedCart[existingProductIndex] = {
+                    ...updatedCart[existingProductIndex],
+                    quantity: newQuantity
+                };
                 return updatedCart;
-            } else {
+            } else if (quantity > 0) {
                 return [...currentCart, { ...product, quantity }];
+            } else {
+                return currentCart;
             }
         });
-        setTotalItems(prevTotal => prevTotal + quantity);
+        setTotalItems(prevTotal => Math.max(prevTotal + quantity, 0));
         // Opcional: llamar a la API en segundo plano
         createCartItem({ ...product, quantity }).catch(() => {});
     };
 
-    // Eliminar producto del carrito y de la API (ahora síncrono)
+    // Eliminar producto del carrito y de la API
     const removeFromCart = (productId) => {
         setCart(currentCart => {
             const productToRemove = currentCart.find(item => item.id === productId);
@@ -62,8 +69,8 @@ export const CartProvider = ({ children }) => {
             setTotalItems(prevTotal => prevTotal - productToRemove.quantity);
             return currentCart.filter(item => item.id !== productId);
         });
-        // Opcional: llamar a la API en segundo plano
-        // Aquí deberías llamar a la API para eliminar el producto del carrito
+        // Eliminar en la API
+        deleteCartItem(productId).catch(() => {});
     };
 
     // Vaciar el carrito

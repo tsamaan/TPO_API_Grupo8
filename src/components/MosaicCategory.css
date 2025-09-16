@@ -1,0 +1,69 @@
+.mosaic-category-container {
+  display: flex;
+  gap: 32px;
+  justify-content: center;
+  margin: 48px auto;
+  max-width: 1200px;
+  padding: 0 16px;
+  flex-wrap: wrap;
+}
+
+
+.mosaic-card {
+  position: relative;
+  width: 320px;
+  height: 320px;
+  max-width: 90vw;
+  max-height: 90vw;
+  border-radius: 32px;
+  overflow: hidden;
+  border: none;
+  box-shadow: none;
+  background: transparent;
+  cursor: pointer;
+  transition: transform 0.3s cubic-bezier(.25,.8,.25,1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+@media (max-width: 900px) {
+  .mosaic-category-container {
+    gap: 18px;
+    max-width: 100vw;
+    padding: 0 8px;
+  }
+  .mosaic-card {
+    width: 44vw;
+    height: 44vw;
+    max-width: 95vw;
+    max-height: 95vw;
+  }
+}
+
+
+.mosaic-card:hover {
+  transform: scale(1.04) rotate(-2deg);
+}
+
+
+/* Eliminado el título */
+
+
+.mosaic-img-frame {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+.mosaic-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 32px;
+  box-shadow: none;
+}
