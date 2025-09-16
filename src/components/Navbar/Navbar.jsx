@@ -1,8 +1,11 @@
 import React from 'react';
+import { useContext } from 'react';
+import { CartContext } from '../../context/CartContext';
 import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 const Navbar = () => {
+  const { totalItems } = useContext(CartContext);
   return (
     <nav className="navbar">
       <div className="navbar-container">
@@ -15,13 +18,11 @@ const Navbar = () => {
             />
           </Link>
         </div>
-        
         <div className="nav-links">
           <Link to="/" className="nav-link">Inicio</Link>
           <Link to="/productos" className="nav-link">Productos &gt;</Link>
           <Link to="/contacto" className="nav-link">Contacto</Link>
         </div>
-
         <div className="nav-footer">
           <div className="social-media">
             <p>INSTAGRAM</p>

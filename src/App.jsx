@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, AuthContext } from './context/AuthContext';
 import { CartProvider } from './context/CartContext';
@@ -7,7 +7,12 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminDashboard from './pages/AdminDashboard';
 import Navbar from './components/Navbar/Navbar';
+<<<<<<< HEAD
 import CartWidget from './components/Carrito/CartWidget';
+=======
+import CartWidget from './components/CartWidget';
+import CartSidebar from './components/CartSidebar';
+>>>>>>> origin/teo
 import './App.css';
 
 function ProtectedScreen({ onLogout, user }) {
@@ -22,11 +27,15 @@ function ProtectedScreen({ onLogout, user }) {
 
 function MainApp() {
   const { isAuthenticated, user, setIsAuthenticated, setUser } = useContext(AuthContext);
+  const [cartOpen, setCartOpen] = useState(false);
 
   const handleLogout = () => {
     setIsAuthenticated(false);
     setUser(null);
   };
+
+  const handleCartClick = () => setCartOpen(true);
+  const handleCartClose = () => setCartOpen(false);
 
   return (
     <Router>
@@ -44,7 +53,8 @@ function MainApp() {
           element={
             <>
               <Navbar />
-              <CartWidget />
+              <CartWidget onMenuClick={handleCartClick} />
+              <CartSidebar isOpen={cartOpen} onClose={handleCartClose} />
               <Routes>
                 <Route path="/" element={<HomePage />} />
                 <Route path="/admin" element={<AdminDashboard />} />

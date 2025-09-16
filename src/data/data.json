@@ -1,49 +1,73 @@
 {
   "products": [
     {
-      "id": 1,
+      "id": "1",
       "name": "Smartphone Samsung Galaxy",
       "price": 299.99,
       "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
       "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
       "category": "electronics",
       "stock": 15,
-      "tags": ["smartphone", "samsung", "android", "48mp", "pantalla grande"]
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ]
     },
     {
-      "id": 2,
+      "id": "2",
       "name": "Auriculares Bluetooth",
       "price": 59.99,
       "description": "Auriculares inalámbricos con cancelación de ruido",
       "image": "https://www.oscarbarbieri.com/pub/media/catalog/product/cache/7baadf0dec41407c7702efdbff940ecb/a/u/auri_jbl.jpg",
       "category": "electronics",
       "stock": 8,
-      "tags": ["auriculares", "bluetooth", "inalámbrico", "cancelación ruido", "música"]
+      "tags": [
+        "auriculares",
+        "bluetooth",
+        "inalámbrico",
+        "cancelación ruido",
+        "música"
+      ]
     },
     {
-      "id": 3,
+      "id": "3",
       "name": "Camiseta Deportiva",
       "price": 24.99,
       "description": "Camiseta transpirable para actividades deportivas",
       "image": "https://vader-prod.s3.amazonaws.com/1739360300-camisetas-deportivas-transpirables-05-67ac88123d041.jpg",
       "category": "clothing",
       "stock": 20,
-      "tags": ["camiseta", "deportiva", "transpirable", "fitness", "ejercicio"]
+      "tags": [
+        "camiseta",
+        "deportiva",
+        "transpirable",
+        "fitness",
+        "ejercicio"
+      ]
     },
     {
-      "id": 4,
+      "id": "4",
       "name": "Libro de Programación",
       "price": 39.99,
       "description": "Guía completa de JavaScript y React",
       "image": "https://http2.mlstatic.com/D_NQ_NP_729536-MLA72640343245_112023-O.webp",
       "category": "books",
       "stock": 12,
-      "tags": ["programación", "javascript", "react", "desarrollo", "frontend"]
+      "tags": [
+        "programación",
+        "javascript",
+        "react",
+        "desarrollo",
+        "frontend"
+      ]
     }
   ],
   "users": [
     {
-      "id": 1,
+      "id": "1",
       "email": "test@haversack.com",
       "password": "test123",
       "nombre": "Test",
@@ -54,7 +78,7 @@
       "phone": "+54 11 0000-0000"
     },
     {
-      "id": 2,
+      "id": "2",
       "email": "juan@example.com",
       "password": "juan123",
       "nombre": "Juan",
@@ -65,7 +89,7 @@
       "phone": "+54 11 1234-5678"
     },
     {
-      "id": 3,
+      "id": "3",
       "email": "maria@example.com",
       "password": "maria123",
       "nombre": "María",
@@ -78,7 +102,7 @@
   ],
   "cart": [
     {
-      "id": 1,
+      "id": "1",
       "userId": 1,
       "products": [
         {
@@ -92,7 +116,7 @@
       "updatedAt": "2025-01-15T10:30:00Z"
     },
     {
-      "id": 2,
+      "id": "2",
       "userId": 2,
       "products": [
         {
@@ -109,6 +133,465 @@
       "total": 144.97,
       "createdAt": "2025-01-15T14:20:00Z",
       "updatedAt": "2025-01-15T15:45:00Z"
+    },
+    {
+      "id": "2",
+      "name": "Auriculares Bluetooth",
+      "price": 59.99,
+      "description": "Auriculares inalámbricos con cancelación de ruido",
+      "image": "https://www.oscarbarbieri.com/pub/media/catalog/product/cache/7baadf0dec41407c7702efdbff940ecb/a/u/auri_jbl.jpg",
+      "category": "electronics",
+      "stock": 8,
+      "tags": [
+        "auriculares",
+        "bluetooth",
+        "inalámbrico",
+        "cancelación ruido",
+        "música"
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 2
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 3
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 4
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 5
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 6
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 7
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 8
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 9
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 10
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 11
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 12
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 13
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 12
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 11
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 10
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 9
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 8
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 7
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 6
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 5
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 4
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 3
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 2
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 1
+    },
+    {
+      "id": "1",
+      "name": "Smartphone Samsung Galaxy",
+      "price": 299.99,
+      "description": "Smartphone con pantalla de 6.1 pulgadas y cámara de 48MP",
+      "image": "https://www.celulares.com/fotos/samsung-galaxy-s24-fe-97492-g-alt.jpg",
+      "category": "electronics",
+      "stock": 15,
+      "tags": [
+        "smartphone",
+        "samsung",
+        "android",
+        "48mp",
+        "pantalla grande"
+      ],
+      "quantity": 1
     }
   ]
 }
