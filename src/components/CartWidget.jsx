@@ -3,8 +3,7 @@ import { useCart } from '../context/CartContext';
 import './CartWidget.css';
 
 const CartWidget = ({ onMenuClick }) => {
-  const { cart } = useCart();
-  const totalItems = cart.reduce((acc, item) => acc + (item.quantity || 1), 0);
+  const { totalItems } = useCart();
 
   return (
     <div className="cart-widget">

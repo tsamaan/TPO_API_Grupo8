@@ -34,20 +34,27 @@ export const CartProvider = ({ children }) => {
 
     // Agregar producto al carrito y a la API (ahora síncrono para evitar problemas de renderizado)
     const addToCart = (product, quantity = 1) => {
-        if (!product.stock || product.stock < quantity) {
-            throw new Error('No hay suficiente stock disponible');
-        }
         setCart(currentCart => {
             const existingProductIndex = currentCart.findIndex(item => item.id === product.id);
             if (existingProductIndex >= 0) {
                 const updatedCart = [...currentCart];
-                updatedCart[existingProductIndex].quantity += quantity;
+                const newQuantity = updatedCart[existingProductIndex].quantity + quantity;
+                if (newQuantity <= 0) {
+                    // Eliminar producto si la cantidad llega a 0
+                    return updatedCart.filter((_, idx) => idx !== existingProductIndex);
+                }
+                updatedCart[existingProductIndex] = {
+                    ...updatedCart[existingProductIndex],
+                    quantity: newQuantity
+                };
                 return updatedCart;
-            } else {
+            } else if (quantity > 0) {
                 return [...currentCart, { ...product, quantity }];
+            } else {
+                return currentCart;
             }
         });
-        setTotalItems(prevTotal => prevTotal + quantity);
+        setTotalItems(prevTotal => Math.max(prevTotal + quantity, 0));
         // Opcional: llamar a la API en segundo plano
         createCartItem({ ...product, quantity }).catch(() => {});
     };
