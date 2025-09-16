@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import { fetchCart, createCartItem } from '../services/api';
+import { fetchCart, createCartItem, deleteCartItem } from '../services/api';
 
 // Crear el contexto
 export const CartContext = createContext();
@@ -52,7 +52,7 @@ export const CartProvider = ({ children }) => {
         createCartItem({ ...product, quantity }).catch(() => {});
     };
 
-    // Eliminar producto del carrito y de la API (ahora síncrono)
+    // Eliminar producto del carrito y de la API
     const removeFromCart = (productId) => {
         setCart(currentCart => {
             const productToRemove = currentCart.find(item => item.id === productId);
@@ -62,8 +62,8 @@ export const CartProvider = ({ children }) => {
             setTotalItems(prevTotal => prevTotal - productToRemove.quantity);
             return currentCart.filter(item => item.id !== productId);
         });
-        // Opcional: llamar a la API en segundo plano
-        // Aquí deberías llamar a la API para eliminar el producto del carrito
+        // Eliminar en la API
+        deleteCartItem(productId).catch(() => {});
     };
 
     // Vaciar el carrito
