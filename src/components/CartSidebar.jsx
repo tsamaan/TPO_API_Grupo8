@@ -9,14 +9,14 @@ const CartSidebar = ({ isOpen, onClose }) => {
 
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
-      removeFromCart(item.id);
-      addToCart(item, item.quantity - 1);
+      // Restar 1 a la cantidad
+      addToCart(item, -1);
     }
   };
 
   const handleIncrease = (item) => {
-    removeFromCart(item.id);
-    addToCart(item, item.quantity + 1);
+    // Sumar 1 a la cantidad
+    addToCart(item, 1);
   };
 
   const totalPrice = calculateTotal();
