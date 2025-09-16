@@ -7,7 +7,7 @@ import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import AdminDashboard from './pages/AdminDashboard';
 import Navbar from './components/Navbar/Navbar';
-import CartWidget from './components/CartWidget';
+import CartWidget from './components/Carrito/CartWidget';
 import './App.css';
 
 function ProtectedScreen({ onLogout, user }) {
