@@ -142,20 +142,6 @@ const ProductList = ({ category: propCategory = null, filterOpen = false, onFilt
   return (
     <div className="product-list-container">
       {/* Lista de productos */}
-                <div className="no-products-found">
-            <p>No se encontraron productos que coincidan con los filtros seleccionados.</p>
-            <button 
-              className="clear-filters-link"
-              onClick={() => applyFilters({
-                sortBy: 'name',
-                selectedColors: [],
-                selectedTags: [],
-                priceRange: { min: '', max: '' }
-              })}
-            >
-              Limpiar filtros
-            </button>
-          </div>
       <div className="product-list">
         {filteredProducts.length > 0 ? (
           filteredProducts.map((product) => {
@@ -175,7 +161,7 @@ const ProductList = ({ category: propCategory = null, filterOpen = false, onFilt
         ) : (
           <div className="no-products-found">
             <p>No se encontraron productos que coincidan con los filtros seleccionados.</p>
-            <button 
+            <button
               className="clear-filters-link"
               onClick={() => applyFilters({
                 sortBy: 'name',
