@@ -110,7 +110,7 @@
   text-decoration: underline;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 720px) {
   .footer-grid {
     grid-template-columns: 1fr;
     text-align: center;
