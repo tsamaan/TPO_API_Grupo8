@@ -22,9 +22,6 @@ const Navbar = () => {
           <Link to="/" className="nav-link">Inicio</Link>
           <Link to="/productos" className="nav-link">Productos &gt;</Link>
           <Link to="/contacto" className="nav-link">Contacto</Link>
-          <span className="cart-indicator" style={{ marginLeft: '1rem', fontWeight: 'bold' }}>
-            🛒 {totalItems}
-          </span>
         </div>
         <div className="nav-footer">
           <div className="social-media">
