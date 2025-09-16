@@ -1,3 +1,196 @@
+.mobile-navbar-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: space-between;
+}
+.mobile-navbar__top {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2.5rem;
+}
+.mobile-navbar__logo img {
+  width: 92px;
+  height: auto;
+  border-radius: 12px;
+}
+.mobile-navbar__menu {
+  display: flex;
+  flex-direction: column;
+  gap: 2.25rem;
+  align-items: flex-start;
+}
+.mobile-navbar-link {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: transform 0.2s ease, text-shadow 0.2s ease;
+}
+.mobile-navbar-link span {
+  font-size: 1.4rem;
+  line-height: 1;
+}
+.mobile-navbar-link:hover,
+.mobile-navbar-link:focus-visible,
+.mobile-navbar-link.active {
+  text-shadow: 0 0 6px rgba(255, 255, 255, 0.65);
+  transform: translateX(2px);
+}
+.mobile-navbar-link--button {
+  text-align: left;
+}
+.mobile-navbar__bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 0.6rem;
+  margin-bottom: 50px;
+  align-items: flex-start;
+}
+.mobile-navbar__social {
+  margin: 0;
+  font-size: 0.95rem;
+  font-weight: 500;
+  letter-spacing: 0.35rem;
+  color: #fff;
+}
+.mobile-navbar-actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background: #7f7f7f;
+  border-radius: 16px;
+  padding: 0.35rem 0.7rem;
+  margin-top: 0.5rem;
+}
+.mobile-navbar-action {
+  text-align: center;
+  text-decoration: none;
+  color: #ffffff;
+  font-weight: 600;
+  font-size: 0.8rem;
+  letter-spacing: 0.05em;
+  padding: 0.45rem 0.6rem;
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.mobile-navbar-action:hover,
+.mobile-navbar-action:focus-visible {
+  background: rgba(255, 255, 255, 0.18);
+}
+.mobile-navbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+  margin-bottom: 2rem;
+}
+.mobile-navbar-link {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.4px;
+  color: #fff;
+  text-decoration: none;
+  background: none;
+  border: none;
+  padding: 0.45rem 0.6rem;
+  border-radius: 999px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-navbar-link:hover,
+.mobile-navbar-link:focus-visible {
+  background: rgba(255,255,255,0.18);
+  color: #b63939;
+}
+.mobile-navbar-actions {
+  display: flex;
+  gap: 0.7rem;
+  margin-top: 2rem;
+}
+.mobile-navbar-action {
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  letter-spacing: 0.05em;
+  padding: 0.45rem 1.1rem;
+  border-radius: 999px;
+  background: #7f7f7f;
+  border: none;
+  min-width: 90px;
+  box-sizing: border-box;
+  transition: background 0.2s, color 0.2s;
+}
+.mobile-navbar-action:hover,
+.mobile-navbar-action:focus-visible {
+  background: #ededed;
+  color: #b63939;
+}
+/* Mobile menu button, only visible on mobile */
+.mobile-menu-btn {
+  display: none;
+  background: none;
+  border: none;
+  margin-right: 12px;
+  cursor: pointer;
+  padding: 0.3rem;
+}
+
+@media (max-width: 720px) {
+  .mobile-menu-btn {
+    display: block;
+    position: relative;
+    z-index: 2100;
+  }
+}
+
+/* Mobile navbar overlay and sidebar */
+.mobile-navbar-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  z-index: 2200;
+  display: flex;
+  justify-content: flex-start;
+  align-items: stretch;
+}
+.mobile-navbar {
+  width: 80vw;
+  max-width: 340px;
+  background: #181818;
+  box-shadow: 8px 0 24px rgba(0,0,0,0.35);
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-left: 2rem;
+  padding-bottom: 1rem;
+  overflow-y: auto;
+}
+.mobile-navbar-close {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2.2rem;
+  cursor: pointer;
+  z-index: 1;
+}
 .cart-widget {
   position: fixed;
   top: 0;

@@ -112,12 +112,12 @@
   ],
   "cart": [
     {
-      "id": "bccb",
-      "name": "Mochila Urban c/Porta Notebook",
-      "price": 30000,
-      "image": "/img/15 B-Photoroom.jpg",
-      "stock": 13,
-      "category": "mochilas",
+      "id": "a882",
+      "name": "Matero Haversack, PU",
+      "price": 25000,
+      "image": "/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
+      "stock": 11,
+      "category": "materos",
       "quantity": 1
     },
     {
@@ -127,6 +127,57 @@
       "image": "/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
       "stock": 11,
       "category": "materos",
+      "quantity": -1
+    },
+    {
+      "id": "a882",
+      "name": "Matero Haversack, PU",
+      "price": 25000,
+      "image": "/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
+      "stock": 11,
+      "category": "materos",
+      "quantity": -1
+    },
+    {
+      "id": "bccb",
+      "name": "Mochila Urban c/Porta Notebook",
+      "price": 30000,
+      "image": "/img/15 B-Photoroom.jpg",
+      "stock": 13,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "bccb",
+      "name": "Mochila Urban c/Porta Notebook",
+      "price": 30000,
+      "image": "/img/15 B-Photoroom.jpg",
+      "stock": 13,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "bccb",
+      "name": "Mochila Urban c/Porta Notebook",
+      "price": 30000,
+      "image": "/img/15 B-Photoroom.jpg",
+      "stock": 13,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "description": "La mochila Haversack modelo Geométrico es la elección perfecta para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 28 litros, es ideal para el uso urbano, universitario o escolar, permitiendo llevar todo lo necesario de manera organizada. Su diseño cuenta con un compartimento específico para notebook, asegurando la protección de tus dispositivos electrónicos mientras te desplazas.",
+      "image": ".\\img\\68-Photoroom.jpg",
+      "stock": "12",
+      "price": "28500",
+      "category": "mochilas",
+      "tags": [
+        "Mochilas",
+        "Geometric",
+        "Escolar"
+      ],
       "quantity": 1
     }
   ]

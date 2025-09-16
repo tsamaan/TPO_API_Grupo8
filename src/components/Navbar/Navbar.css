@@ -131,51 +131,9 @@ main {
 
 @media (max-width: 720px) {
   .navbar {
-    position: static;
-    width: 100%;
-    min-height: auto;
-    flex-direction: row;
-    align-items: center;
-    gap: 2rem;
-    padding: 1.5rem 2rem;
+    display: none !important;
   }
-
-  .navbar__top {
-    flex-direction: row;
-    align-items: center;
-    gap: 2.5rem;
-  }
-
-  .navbar__menu {
-    flex-direction: row;
-    gap: 1.75rem;
-  }
-
-  .navbar__bottom {
-    flex-direction: row;
-    align-items: center;
-    gap: 1.5rem;
-    margin-top: 0;
-  }
-
-  .navbar__action {
-    text-align: center;
-    text-decoration: none;
-    color: #181818;
-    background: #fff;
-    font-weight: 600;
-    font-size: 0.95rem;
-    letter-spacing: 0.05em;
-    padding: 0.45rem 1.1rem;
-    border-radius: 999px;
-    transition: background 0.2s ease, color 0.2s ease;
-    border: none;
-    min-width: 90px;
-    box-sizing: border-box;
-  }
-  .navbar__action:hover,
-  .navbar__action:focus-visible {
-    background: #ededed;
-    color: #b63939;
+  main {
+    margin-left: 0 !important;
   }
 }
