@@ -8,8 +8,8 @@ export const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [error, setError] = useState("");
 
-  const login = (email, password) => {
-    const result = loginService(email, password);
+  const login = async (email, password) => {
+    const result = await loginService(email, password);
     if (result.success) {
       setIsAuthenticated(true);
       setUser(result.user);
@@ -21,8 +21,8 @@ export const AuthProvider = ({ children }) => {
     }
   };
 
-  const register = (data) => {
-    const result = registerService(data);
+  const register = async (data) => {
+    const result = await registerService(data);
     if (result.success) {
       setError("");
       return true;
