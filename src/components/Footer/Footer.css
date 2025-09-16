@@ -1,41 +1,141 @@
+/* root variable for navbar width so we can keep footer visible */
+:root {
+  --navbar-width: 250px;
+}
+
 .footer {
   width: 100%;
-  background-color: #f5f5f5;
-  padding: 1rem 0;
-  border-top: 1px solid #e0e0e0;
+  background-color: #fff;
   margin-top: auto;
+  color: #333;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial;
 }
 
-.footer-content {
+.footer-inner {
   max-width: 1200px;
   margin: 0 auto;
-  padding: 0 1rem;
-  text-align: center;
+  padding: 3rem 1rem 2rem;
+  margin-left: 30%; 
 }
 
-.footer p {
+.footer-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 2rem;
+  align-items: start;
+}
+
+.footer-col ul {
+  list-style: none;
+  padding: 0;
   margin: 0;
-  color: #333;
-  font-size: 0.9rem;
-  line-height: 1.5;
 }
 
-.footer-link {
-  color: #333;
-  text-decoration: underline;
-  transition: color 0.3s ease;
+.footer-col--links a {
+  color: #111;
+  text-decoration: none;
+  font-weight: 600;
+  display: block;
+  padding: 0.6rem 0;
+  font-size: 1rem;
 }
 
-.footer-link:hover {
+.footer-col--links a:hover {
   color: #000;
 }
 
-@media (max-width: 768px) {
-  .footer-content {
-    padding: 0 1rem;
+.newsletter {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.newsletter input[type="text"] {
+  border: 1px solid #e6e6e6;
+  padding: 0.9rem 1rem;
+  border-radius: 30px;
+  width: 320px;
+  background: #fafafa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+  border-right: none;
+}
+
+.newsletter button {
+  margin-left: -44px;
+  background: #fff;
+  border: 1px solid #ddd;
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  font-size: 1.4rem;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+.footer-col--contact h4 {
+  margin: 0 0 0.6rem 0;
+  color: #777;
+  font-size: 0.95rem;
+}
+
+.footer-col--contact p {
+  margin: 0.25rem 0;
+  color: #666;
+  font-size: 0.9rem;
+}
+
+.footer-bottom {
+  background: #e9e9e9;
+  border-top-left-radius: 24px;
+  border-top-right-radius: 24px;
+  margin-top: 2rem;
+}
+
+.footer-bottom-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 1.5rem 1rem;
+  margin-left: calc(var(--navbar-width));
+  text-align: center;
+  color: #333;
+  font-size: 0.95rem;
+}
+
+.footer-bottom a {
+  color: #1a73e8;
+  text-decoration: underline;
+}
+
+@media (max-width: 900px) {
+  :root { --navbar-width: 0px; }
+
+  .footer-grid {
+    grid-template-columns: 1fr;
+    text-align: center;
   }
-  
-  .footer p {
-    font-size: 0.8rem;
+
+  .newsletter input[type="text"] {
+    width: 100%;
+    margin-bottom: 0.75rem;
+  }
+
+  .newsletter button {
+    margin-left: 0;
+  }
+
+  .product-list { /* ensure product list doesn't get hidden under navbar on smaller viewports */
+    margin-left: 0;
+  }
+
+  .footer-inner {
+    margin-left: 0;
+  }
+
+  .footer-bottom-inner {
+    margin-left: 0;
   }
 }

@@ -69,10 +69,14 @@ const ProductList = ({ category = null }) => {
   return (
     <div className="product-list">
       {products.map((product) => {
-        const key = product.id || product.sku || product.title || product.name
+        const key = product.id || product.sku || product.title || product.name  
+        const oldPrice = product.oldPrice || product.price * 1.2
 
         return (
           <article className="product-list__item" key={key}>
+            {product.discount && (
+              <span className="product-list__discount">En oferta</span>
+            )}
             {product.image && (
               <img
                 className="product-list__image"
@@ -83,12 +87,10 @@ const ProductList = ({ category = null }) => {
             )}
             <div className="product-list__body">
               <h3 className="product-list__title">{product.title || product.name}</h3>
-              {product.description && (
-                <p className="product-list__description">{product.description}</p>
-              )}
-              {typeof product.price !== 'undefined' && (
-                <p className="product-list__price">{formatPrice(product.price)}</p>
-              )}
+              <div className="product-list__prices">
+                <span className="product-list__price-current">{formatPrice(product.price)}</span>
+                <span className="product-list__price-old">{formatPrice(oldPrice)}</span>
+              </div>
             </div>
           </article>
         )
