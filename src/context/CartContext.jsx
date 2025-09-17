@@ -22,8 +22,17 @@ export const CartProvider = ({ children }) => {
         const loadCart = async () => {
             try {
                 const apiCart = await fetchCart();
-                setCart(apiCart);
-                setTotalItems(apiCart.reduce((acc, item) => acc + (item.quantity || 1), 0));
+                // Agrupar productos por id y sumar cantidades
+                const grouped = Object.values(apiCart.reduce((acc, item) => {
+                    if (acc[item.id]) {
+                        acc[item.id].quantity += item.quantity || 1;
+                    } else {
+                        acc[item.id] = { ...item, quantity: item.quantity || 1 };
+                    }
+                    return acc;
+                }, {}));
+                setCart(grouped);
+                setTotalItems(grouped.reduce((acc, item) => acc + (item.quantity || 1), 0));
             } catch (error) {
                 setCart([]);
                 setTotalItems(0);
