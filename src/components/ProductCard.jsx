@@ -1,4 +1,5 @@
 import React from 'react';
+import { getColorHex } from '../utils/colorUtils';
 import './ProductCard.css';
 
 const ProductCard = ({ product, inCart, onAdd, onRemove }) => {
@@ -12,6 +13,21 @@ const ProductCard = ({ product, inCart, onAdd, onRemove }) => {
             <span key={idx} className="product-card-tag">{tag}</span>
           ))}
         </div>
+        {product.colores && product.colores.length > 0 && (
+          <div className="product-card-colors">
+            {product.colores.map((color, idx) => (
+              <div
+                key={idx}
+                className="product-card-color-circle"
+                style={{ backgroundColor: getColorHex(color) }}
+                title={color}
+              />
+            ))}
+            {product.colores.length > 3 && (
+              <span className="color-count">+{product.colores.length - 3}</span>
+            )}
+          </div>
+        )}
         <div className="product-card-price">${product.price.toLocaleString('es-AR')}</div>
         <div className="product-card-actions">
           {!inCart ? (

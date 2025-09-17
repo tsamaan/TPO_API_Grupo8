@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
+import { getColorHex } from '../utils/colorUtils';
 import ProductImageCarousel from './ProductImageCarousel';
 import './ProductDetail.css';
 
@@ -140,6 +141,23 @@ const ProductDetail = () => {
         <div className="product-detail-haversack-description">
           <b>{nombre}</b>: {descripcion}
         </div>
+        {product.colores && product.colores.length > 0 && (
+          <div className="product-detail-haversack-colors">
+            <b>Colores disponibles:</b>
+            <div className="colors-list">
+              {product.colores.map((color, index) => (
+                <div key={index} className="color-option">
+                  <div
+                    className="color-circle"
+                    style={{ backgroundColor: getColorHex(color) }}
+                    title={color}
+                  />
+                  <span className="color-name">{color}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        )}
         <div className="product-detail-haversack-stock">
           <b>Stock:</b> {stock}
         </div>

@@ -10,10 +10,12 @@ const AddProductForm = ({ onProductAdded }) => {
     stock: 0,
     price: 0,
     category: '',
-    tags: []
+    tags: [],
+    colores: []
   });
 
   const [currentImageUrl, setCurrentImageUrl] = useState('');
+  const [currentColor, setCurrentColor] = useState('');
 
   const [errors, setErrors] = useState({});
 
@@ -38,6 +40,23 @@ const AddProductForm = ({ onProductAdded }) => {
     setProduct(prevProduct => ({
       ...prevProduct,
       [name]: name === 'tags' ? value.split(',').map(tag => tag.trim()) : value
+    }));
+  };
+
+  const addColor = () => {
+    if (currentColor.trim() && !product.colores.includes(currentColor.trim())) {
+      setProduct(prevProduct => ({
+        ...prevProduct,
+        colores: [...prevProduct.colores, currentColor.trim()]
+      }));
+      setCurrentColor('');
+    }
+  };
+
+  const removeColor = (index) => {
+    setProduct(prevProduct => ({
+      ...prevProduct,
+      colores: prevProduct.colores.filter((_, i) => i !== index)
     }));
   };
 
@@ -72,9 +91,11 @@ const AddProductForm = ({ onProductAdded }) => {
           stock: 0,
           price: 0,
           category: '',
-          tags: []
+          tags: [],
+          colores: []
         });
         setCurrentImageUrl('');
+        setCurrentColor('');
       } catch (error) {
         alert('Error al crear el producto');
         console.error(error);
@@ -195,6 +216,36 @@ const AddProductForm = ({ onProductAdded }) => {
           value={Array.isArray(product.tags) ? product.tags.join(', ') : ''}
           onChange={handleChange}
         />
+      </div>
+
+      <div className="form-group">
+        <label htmlFor="colores">Colores Disponibles</label>
+        <div className="color-input-group">
+          <input
+            type="text"
+            id="current-color"
+            placeholder="Nombre del color"
+            value={currentColor}
+            onChange={(e) => setCurrentColor(e.target.value)}
+            onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addColor())}
+          />
+          <button type="button" onClick={addColor} disabled={!currentColor.trim() || product.colores.includes(currentColor.trim())}>
+            Agregar Color
+          </button>
+        </div>
+
+        {product.colores.length > 0 && (
+          <div className="colors-preview">
+            {product.colores.map((color, index) => (
+              <div key={index} className="color-item">
+                <span className="color-name">{color}</span>
+                <button type="button" onClick={() => removeColor(index)} className="color-remove">
+                  ×
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
 
       <div className="form-actions">
