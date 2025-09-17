@@ -39,10 +39,6 @@ Este proyecto es una tienda online desarrollada en React + Vite para la materia 
 - `/src/data` - Datos de productos y usuarios
 - `/server` - Configuración del backend (json-server)
 
-## Créditos
-- Proyecto realizado por Grupo 8 para la materia **Aplicaciones Interactivas** - UADE
-- Docente: [Nombre del docente]
-- Año: 2025
 
 ## Notas
 - El proyecto utiliza React, Vite, Context API y json-server.
