@@ -1,3 +1,21 @@
+export const createOrder = async (orderData) => {
+  try {
+    const response = await fetch(`${API_BASE_URL}/orders`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(orderData),
+    });
+    if (!response.ok) {
+      throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    return await response.json();
+  } catch (error) {
+    console.error('Error creating order:', error);
+    throw error;
+  }
+};
 // Eliminar producto del carrito
 export const deleteCartItem = async (id) => {
   try {

@@ -3,27 +3,26 @@
     {
       "id": "bccb",
       "name": "Mochila Urban c/Porta Notebook",
-      "description": "La mochila Haversack Urban es la compañera ideal para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 25 litros y un bosillo interno porta notebook es perfecta para llevar todo lo necesario, ya sea para la universidad, el trabajo o actividades escolares. Su diseño urbano y versátil se adapta a diferentes entornos, asegurando que siempre luzcas bien mientras transportas tus pertenencias.",
+      "price": 30000,
+      "image": "/img/Mochilas/15 B-Photoroom.jpg",
       "images": [
         "/img/Mochilas/15 B-Photoroom.jpg",
         "/img/Mochilas/Captura de pantalla 2025-04-23 011558-Photoroom.jpg"
       ],
-      "stock": "13",
-      "price": "30000",
+      "stock": "1",
       "category": "mochilas",
+      "quantity": 3,
+      "colores": [],
+      "description": "La mochila Haversack de 18 pulgadas es la compañera ideal para adultos que buscan funcionalidad y estilo en su día a día. Con una capacidad de 25 litros, es perfecta para llevar todo lo necesario, ya sea para la universidad, el trabajo o actividades escolares. Su diseño urbano y versátil se adapta a diferentes entornos, asegurando que siempre luzcas bien mientras transportas tus pertenencias.",
       "tags": [
         "Mochilas",
-        "Urban",
-        "PortaNotebook"
-      ],
-      "colores": [
-        "Rojo",
-        "Azul"
+        "Urban"
       ]
     },
     {
       "id": "27ff",
       "name": "Mochila Geometric",
+      "description": "La mochila Haversack modelo Geométrico es la elección perfecta para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 28 litros, es ideal para el uso urbano, universitario o escolar, permitiendo llevar todo lo necesario de manera organizada. Su diseño cuenta con un compartimento específico para notebook, asegurando la protección de tus dispositivos electrónicos mientras te desplazas.",
       "price": 28500,
       "image": "/img/Mochilas/68-Photoroom.jpg",
       "images": [
@@ -37,23 +36,20 @@
     {
       "id": "a882",
       "name": "Matero Haversack, PU",
-      "description": "El Bolso Matero Haversack es la elección perfecta para quienes buscan funcionalidad y estilo en sus salidas. Con un diseño que combina un simil Cuero Liso con uno camuflado.\n\nSu capacidad de 20 litros y dimensiones de 40 cm de largo, 28 cm de ancho y 18 cm de profundidad lo convierten en un compañero ideal para llevar todo lo necesario.",
+      "price": 25000,
+      "image": "/img/Materos/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
       "images": [
         "/img/Materos/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
         "/img/Materos/cb880746-3c75-484a-8977-067533524371-Photoroom.jpg"
       ],
-      "stock": "11",
-      "price": "25000",
+      "stock": 0,
       "category": "materos",
+      "quantity": 11,
+      "colores": [],
       "tags": [
-        "Materos",
-        "PU",
-        "Camuflado"
+        "Materos"
       ],
-      "colores": [
-        "Azul",
-        "Negro"
-      ]
+      "description": "El Matero, Tote, Mochila, de la marca HAVERSACK. Con una capacidad de 16 L, podrás disfrutar de tus mates en cualquier momento del día. Su material de Poliuretano (PU) lo hace resistente y duradero, perfecto para su uso diario. Además, su interior forrado y con divisor interno acolchado te permite organizar tus utensilios de manera práctica y segura, el mismo está asegurado al interior con un velcro, si lo retiras de una manera muy fácil, lo utilizas como un tote o una mochila."
     },
     {
       "id": "0dce",
@@ -107,7 +103,7 @@
       "images": [
         "/img/Materos/DSC_6165-Photoroom-Photoroom.jpg"
       ],
-      "stock": "11",
+      "stock": 10,
       "price": "43000",
       "category": "materos",
       "tags": [
@@ -340,21 +336,37 @@
       "name": "Admin User",
       "address": "admin address",
       "phone": "+54 11 0000-0000"
+    },
+    {
+      "nombre": "juan",
+      "apellido": "test",
+      "email": "juan@example.com",
+      "phone": "juan@example.com",
+      "password": "juan123",
+      "confirmPassword": "juan123",
+      "name": "juan test",
+      "address": "",
+      "id": "4Jdlb7m"
     }
   ],
-  "cart": [
+  "cart": [],
+  "orders": [
     {
-      "id": "27ff",
-      "name": "Mochila Geometric",
-      "price": 28500,
-      "image": "/img/Mochilas/68-Photoroom.jpg",
-      "images": [
-        "/img/Mochilas/68-Photoroom.jpg",
-        "/img/Mochilas/65-Photoroom.jpg"
+      "nombre": "Felipe",
+      "apellido": "Galli",
+      "email": "felipegall1.fg@gmail.com",
+      "telefono": "01151381794",
+      "productos": [
+        {
+          "id": "4f7UNQe",
+          "name": "Bolso Fitness Cordura",
+          "cantidad": 1,
+          "precio": 45000
+        }
       ],
-      "stock": 12,
-      "category": "mochilas",
-      "quantity": 1
+      "total": 45000,
+      "fecha": "2025-09-17T14:24:58.854Z",
+      "id": 1
     }
   ]
 }
