@@ -1,3 +1,4 @@
+
 import { useState } from 'react';
 import '../styles/ContactPage.css';
 
@@ -31,62 +32,71 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="contact-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '4rem', minHeight: '80vh', width: '100%' }}>
-            <div className="contact-info" style={{ textAlign: 'left', minWidth: 320, marginLeft: 0, flex: '0 0 320px' }}>
-                <h1 style={{ marginBottom: '1.5rem' }}>Contacto</h1>
-                <p style={{ marginBottom: '1.2rem' }}>WhatsApp: 541151783645</p>
-                <p style={{ marginBottom: '1.2rem' }}>haversack.ventas@gmail.com</p>
-                <p>Punta arenas 1326, La paternal, CABA</p>
-            </div>
-            <form className="contact-form" style={{ flex: '1 1 0', minWidth: 400, width: '100%', marginTop: '2.5rem' }} onSubmit={handleSubmit}>
-                <div className="form-group">
-                    <label htmlFor="nombre">NOMBRE</label>
-                    <input
-                        type="text"
-                        id="nombre"
-                        name="nombre"
-                        value={formData.nombre}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="email">EMAIL</label>
-                    <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="telefono">TELÉFONO</label>
-                    <input
-                        type="tel"
-                        id="telefono"
-                        name="telefono"
-                        value={formData.telefono}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <div className="form-group">
-                    <label htmlFor="mensaje">MENSAJE</label>
-                    <textarea
-                        id="mensaje"
-                        name="mensaje"
-                        value={formData.mensaje}
-                        onChange={handleChange}
-                        required
-                    />
-                </div>
-                <button type="submit" className="submit-button">
-                    Enviar
-                </button>
-            </form>
-        </div>
+        <main className="contact-container">
+            <section className="contact-info">
+                <h1 className="contact-title">Contacto</h1>
+                <ul className="contact-details">
+                    <li><strong>WhatsApp:</strong> <a href="https://wa.me/541151783645" target="_blank" rel="noopener noreferrer">541151783645</a></li>
+                    <li><strong>Email:</strong> <a href="mailto:haversack.ventas@gmail.com">haversack.ventas@gmail.com</a></li>
+                    <li><strong>Dirección:</strong> Punta Arenas 1326, La Paternal, CABA</li>
+                </ul>
+            </section>
+            <section className="contact-form-section">
+                <form className="contact-form" onSubmit={handleSubmit} autoComplete="off">
+                    <div className="form-group">
+                        <label htmlFor="nombre">Nombre</label>
+                        <input
+                            type="text"
+                            id="nombre"
+                            name="nombre"
+                            value={formData.nombre}
+                            onChange={handleChange}
+                            required
+                            placeholder="Tu nombre"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            value={formData.email}
+                            onChange={handleChange}
+                            required
+                            placeholder="ejemplo@email.com"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="telefono">Teléfono</label>
+                        <input
+                            type="tel"
+                            id="telefono"
+                            name="telefono"
+                            value={formData.telefono}
+                            onChange={handleChange}
+                            required
+                            placeholder="Ej: 11 1234-5678"
+                        />
+                    </div>
+                    <div className="form-group">
+                        <label htmlFor="mensaje">Mensaje</label>
+                        <textarea
+                            id="mensaje"
+                            name="mensaje"
+                            value={formData.mensaje}
+                            onChange={handleChange}
+                            required
+                            placeholder="Escribe tu mensaje aquí..."
+                            rows={4}
+                        />
+                    </div>
+                    <button type="submit" className="submit-button">
+                        Enviar
+                    </button>
+                </form>
+            </section>
+        </main>
     );
 };
 

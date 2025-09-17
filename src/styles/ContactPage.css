@@ -1,7 +1,6 @@
 .contact-container {
-    max-width: 600px;
+
     min-height: 100vh;
-    margin: 0 auto;
     padding: 0 1rem;
     display: flex;
     flex-direction: column;
@@ -97,7 +96,7 @@
     box-shadow: 0 2px 4px rgba(182, 57, 57, 0.2);
 }
 
-@media (max-width: 768px) {
+@media (max-width: 720px) {
     .contact-container {
         margin: 1rem;
     }
