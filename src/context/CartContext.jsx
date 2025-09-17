@@ -1,5 +1,5 @@
 import { createContext, useState, useContext, useEffect } from 'react';
-import { fetchCart, createCartItem, deleteCartItem } from '../services/api';
+import { createCartItem, deleteCartItem } from '../services/api';
 
 // Crear el contexto
 export const CartContext = createContext();
@@ -17,29 +17,6 @@ export const useCart = () => {
 export const CartProvider = ({ children }) => {
     const [cart, setCart] = useState([]);
     const [totalItems, setTotalItems] = useState(0);
-    // Cargar carrito desde la API al iniciar
-    useEffect(() => {
-        const loadCart = async () => {
-            try {
-                const apiCart = await fetchCart();
-                // Agrupar productos por id y sumar cantidades
-                const grouped = Object.values(apiCart.reduce((acc, item) => {
-                    if (acc[item.id]) {
-                        acc[item.id].quantity += item.quantity || 1;
-                    } else {
-                        acc[item.id] = { ...item, quantity: item.quantity || 1 };
-                    }
-                    return acc;
-                }, {}));
-                setCart(grouped);
-                setTotalItems(grouped.reduce((acc, item) => acc + (item.quantity || 1), 0));
-            } catch (error) {
-                setCart([]);
-                setTotalItems(0);
-            }
-        };
-        loadCart();
-    }, []);
 
     // Agregar producto al carrito y a la API (ahora síncrono para evitar problemas de renderizado)
     const addToCart = (product, quantity = 1) => {

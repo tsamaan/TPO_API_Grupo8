@@ -10,7 +10,6 @@ import Navbar from './components/Navbar/Navbar';
 import CartWidget from './components/Carrito/CartWidget';
 import CartSidebar from './components/CartSidebar';
 import ProductsPage from './pages/ProductsPage'
-import ProductDetail from './components/ProductDetail'
 import ContactPage from './pages/ContactPage'
 import Footer from './components/Footer/Footer'
 import FilterWidget from './components/FilterWidget'

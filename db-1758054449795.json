@@ -191,6 +191,90 @@
       "stock": 12,
       "category": "mochilas",
       "quantity": -1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": -1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": -1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/68-Photoroom.jpg",
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": 1
     }
   ]
 }
