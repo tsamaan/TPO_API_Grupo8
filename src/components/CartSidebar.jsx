@@ -2,10 +2,12 @@
 
 import React from 'react';
 import { useCart } from '../context/CartContext';
-import { updateProduct } from '../services/api';
+import { useNavigate } from 'react-router-dom';
+import { updateProduct, getProductById } from '../services/api';
 import './CartSidebar.css';
 
 const CartSidebar = ({ isOpen, onClose }) => {
+  const navigate = useNavigate();
   const { cart, removeFromCart, addToCart, calculateTotal, clearCart } = useCart();
 
   // Simulación de stock en memoria (solo para frontend)
@@ -49,28 +51,38 @@ const CartSidebar = ({ isOpen, onClose }) => {
   };
 
 
+
   const handleBuy = async () => {
-    // Verificar que no se compre más de lo disponible
-    const sinStock = cart.some(item => item.quantity > stockMap.current[item.id]);
-    if (sinStock) {
-      alert('No puedes comprar más productos de los que hay en stock.');
-      return;
-    }
-    // Reducir stock en la API
+    // Validar stock en la API antes de comprar
     try {
+      const stockCheck = await Promise.all(
+        cart.map(async item => {
+          const productoApi = await getProductById(item.id);
+          return productoApi.stock >= item.quantity;
+        })
+      );
+      const sinStock = stockCheck.some(valid => !valid);
+      if (sinStock) {
+        alert('No hay suficiente stock disponible para uno o más productos. Actualiza la página y vuelve a intentar.');
+        return;
+      }
+      // Reducir stock en la API
       await Promise.all(
         cart.map(async item => {
-          const nuevoStock = stockMap.current[item.id] - item.quantity;
-          await updateProduct(item.id, { ...item, stock: nuevoStock });
+          const productoApi = await getProductById(item.id);
+          const nuevoStock = productoApi.stock - item.quantity;
+          await updateProduct(item.id, { ...productoApi, stock: nuevoStock });
           stockMap.current[item.id] = nuevoStock;
         })
       );
       reduceStock();
       clearCart();
-      alert('¡Compra generada con éxito!');
-      onClose();
+  alert('¡Compra generada con éxito!');
+  onClose();
+  navigate('/');
+  window.location.reload();
     } catch (err) {
-      alert('Error al actualizar el stock en la API');
+      alert('Error al validar o actualizar el stock en la API');
     }
   };
 
