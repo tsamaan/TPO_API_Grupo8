@@ -9,35 +9,41 @@
         "/img/Mochilas/15 B-Photoroom.jpg",
         "/img/Mochilas/Captura de pantalla 2025-04-23 011558-Photoroom.jpg"
       ],
-      "stock": "1",
+      "stock": "27",
       "category": "mochilas",
       "quantity": 3,
-      "colores": [],
+      "colores": [
+        "Azul",
+        "Rojo"
+      ],
       "description": "La mochila Haversack de 18 pulgadas es la compañera ideal para adultos que buscan funcionalidad y estilo en su día a día. Con una capacidad de 25 litros, es perfecta para llevar todo lo necesario, ya sea para la universidad, el trabajo o actividades escolares. Su diseño urbano y versátil se adapta a diferentes entornos, asegurando que siempre luzcas bien mientras transportas tus pertenencias.",
       "tags": [
         "Mochilas",
-        "Urban"
+        "Urban",
+        "PortaNotebook"
       ]
     },
     {
       "id": "27ff",
       "name": "Mochila Geometric",
       "description": "La mochila Haversack modelo Geométrico es la elección perfecta para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 28 litros, es ideal para el uso urbano, universitario o escolar, permitiendo llevar todo lo necesario de manera organizada. Su diseño cuenta con un compartimento específico para notebook, asegurando la protección de tus dispositivos electrónicos mientras te desplazas.",
+      "price": 28500,
+      "image": "/img/Mochilas/68-Photoroom.jpg",
       "images": [
         "/img/Mochilas/68-Photoroom.jpg",
         "/img/Mochilas/65-Photoroom.jpg"
       ],
-      "stock": 3,
-      "price": "28500",
+      "stock": 11,
       "category": "mochilas",
+      "quantity": 1,
+      "colores": [
+        "Rojo",
+        "Celeste"
+      ],
       "tags": [
         "Mochilas",
         "Geometric",
         "Escolar"
-      ],
-      "colores": [
-        "Rojo",
-        "Celeste"
       ]
     },
     {
@@ -49,12 +55,17 @@
         "/img/Materos/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
         "/img/Materos/cb880746-3c75-484a-8977-067533524371-Photoroom.jpg"
       ],
-      "stock": 0,
+      "stock": "23",
       "category": "materos",
       "quantity": 11,
-      "colores": [],
+      "colores": [
+        "Negro",
+        "Azul"
+      ],
       "tags": [
-        "Materos"
+        "Materos",
+        "PU",
+        "Camuflado"
       ],
       "description": "El Matero, Tote, Mochila, de la marca HAVERSACK. Con una capacidad de 16 L, podrás disfrutar de tus mates en cualquier momento del día. Su material de Poliuretano (PU) lo hace resistente y duradero, perfecto para su uso diario. Además, su interior forrado y con divisor interno acolchado te permite organizar tus utensilios de manera práctica y segura, el mismo está asegurado al interior con un velcro, si lo retiras de una manera muy fácil, lo utilizas como un tote o una mochila."
     },
@@ -67,7 +78,7 @@
         "/img/Bolsos/bolso rojo-Photoroom-Photoroom.jpg",
         "/img/Bolsos/bolso rosa-Photoroom-Photoroom.jpg"
       ],
-      "stock": "10",
+      "stock": "23",
       "price": "58000",
       "category": "bolsos",
       "tags": [
@@ -183,7 +194,9 @@
         "Fashion",
         "PU"
       ],
-      "colores": [],
+      "colores": [
+        "Negro"
+      ],
       "id": "d7YbOzv"
     },
     {
@@ -319,6 +332,28 @@
         "Fucsia"
       ],
       "id": "6j9qX41"
+    },
+    {
+      "name": "Mochila Clasic - Cordura ",
+      "description": "La mochila clásica Haversack es la compañera ideal para tus viajes y actividades diarias. Con una capacidad de 17 litros,\n su diseño urbano y escolar se adapta perfectamente a las necesidades de los adultos que buscan funcionalidad y estilo. \nFabricada en 100% poliamida, esta mochila es reforzada, lo que garantiza durabilidad y resistencia en el uso diario.\nCon dimensiones de 42 cm de altura, 30 cm de ancho y 14 cm de profundidad, es lo suficientemente espaciosa para llevar \nlo esencial sin ser voluminosa.\n",
+      "images": [
+        "/img\\Mochilas\\59-Photoroom.jpg",
+        "/img\\Mochilas\\62-Photoroom.jpg"
+      ],
+      "stock": "43",
+      "price": "16000",
+      "category": "mochilas",
+      "tags": [
+        "Mochila",
+        "Clasic",
+        "Cordura",
+        ""
+      ],
+      "colores": [
+        "Negro",
+        "Rojo"
+      ],
+      "id": "4gDpisA"
     }
   ],
   "users": [
@@ -374,6 +409,40 @@
       "total": 45000,
       "fecha": "2025-09-17T14:24:58.854Z",
       "id": 1
+    },
+    {
+      "nombre": "aaaa",
+      "apellido": "bbbb",
+      "email": "aaaa@test.com",
+      "telefono": "2901902012",
+      "productos": [
+        {
+          "id": "a882",
+          "name": "Matero Haversack, PU",
+          "cantidad": 20,
+          "precio": 25000
+        }
+      ],
+      "total": 500000,
+      "fecha": "2025-09-17T15:17:15.834Z",
+      "id": 2
+    },
+    {
+      "nombre": "aaaa",
+      "apellido": "bbbb",
+      "email": "aaaa@test.com",
+      "telefono": "123455678",
+      "productos": [
+        {
+          "id": "0dce",
+          "name": "Carteron de viaje Impermeable ",
+          "cantidad": 10,
+          "precio": 58000
+        }
+      ],
+      "total": 580000,
+      "fecha": "2025-09-17T15:39:20.431Z",
+      "id": 3
     }
   ]
 }
