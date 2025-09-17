@@ -1,25 +1,78 @@
+
+
 import React from 'react';
 import { useCart } from '../context/CartContext';
+import { updateProduct } from '../services/api';
 import './CartSidebar.css';
 
 const CartSidebar = ({ isOpen, onClose }) => {
-  const { cart, removeFromCart, addToCart, calculateTotal } = useCart();
+  const { cart, removeFromCart, addToCart, calculateTotal, clearCart } = useCart();
+
+  // Simulación de stock en memoria (solo para frontend)
+  const stockMap = React.useRef({});
+  React.useEffect(() => {
+    // Inicializar stockMap solo una vez por producto
+    cart.forEach(item => {
+      if (stockMap.current[item.id] === undefined) {
+        stockMap.current[item.id] = item.stock ?? 10; // default 10 si no hay stock
+      }
+    });
+  }, [cart]);
 
   if (!isOpen) return null;
 
+
   const handleDecrease = (item) => {
     if (item.quantity > 1) {
-      // Restar 1 a la cantidad
       addToCart(item, -1);
     }
   };
 
   const handleIncrease = (item) => {
-    // Sumar 1 a la cantidad
-    addToCart(item, 1);
+    // Solo sumar si hay stock disponible
+    const stockRestante = stockMap.current[item.id] - item.quantity;
+    if (stockRestante > 0) {
+      addToCart(item, 1);
+    } else {
+      alert('No hay más stock disponible de este producto');
+    }
   };
 
   const totalPrice = calculateTotal();
+
+
+  // Simular reducción de stock (solo frontend)
+  const reduceStock = () => {
+    cart.forEach(item => {
+      stockMap.current[item.id] = stockMap.current[item.id] - item.quantity;
+    });
+  };
+
+
+  const handleBuy = async () => {
+    // Verificar que no se compre más de lo disponible
+    const sinStock = cart.some(item => item.quantity > stockMap.current[item.id]);
+    if (sinStock) {
+      alert('No puedes comprar más productos de los que hay en stock.');
+      return;
+    }
+    // Reducir stock en la API
+    try {
+      await Promise.all(
+        cart.map(async item => {
+          const nuevoStock = stockMap.current[item.id] - item.quantity;
+          await updateProduct(item.id, { ...item, stock: nuevoStock });
+          stockMap.current[item.id] = nuevoStock;
+        })
+      );
+      reduceStock();
+      clearCart();
+      alert('¡Compra generada con éxito!');
+      onClose();
+    } catch (err) {
+      alert('Error al actualizar el stock en la API');
+    }
+  };
 
   return (
     <div className="cart-sidebar-overlay" onClick={onClose}>
@@ -37,10 +90,11 @@ const CartSidebar = ({ isOpen, onClose }) => {
                   <div className="cart-item-price">
                     ${typeof item.price === 'number' ? item.price.toLocaleString('es-AR') : '0'}
                   </div>
+                  <div className="cart-item-stock">Stock disponible: {stockMap.current[item.id] - item.quantity}</div>
                   <div className="cart-item-controls">
                     <button onClick={() => handleDecrease(item)} disabled={item.quantity <= 1}>-</button>
                     <span>{item.quantity}</span>
-                    <button onClick={() => handleIncrease(item)}>+</button>
+                    <button onClick={() => handleIncrease(item)} disabled={stockMap.current[item.id] - item.quantity <= 0}>+</button>
                     <button className="cart-item-remove" onClick={() => removeFromCart(item.id)}>Eliminar</button>
                   </div>
                 </div>
@@ -62,7 +116,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
             <span>ENVÍO:</span>
             <span>Calculálo arriba para verlo</span>
           </div>
-          <button className="cart-buy-btn">INICIAR COMPRA</button>
+          <button className="cart-buy-btn" onClick={handleBuy}>INICIAR COMPRA</button>
         </div>
         <button className="cart-close-btn" onClick={onClose} aria-label="Cerrar carrito">×</button>
       </aside>
