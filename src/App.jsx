@@ -100,7 +100,7 @@ function MainRoutes(props) {
             <Navbar />
             <CartWidget onMenuClick={handleCartClick} />
             {showFilterWidget && (
-              <FilterWidget onFilterClick={handleFilterClick} productCount={productCount} />
+              <FilterWidget onFilterClick={filterOpen ? handleFilterClose : handleFilterClick} productCount={productCount} isOpen={filterOpen} />
             )}
             <CartSidebar isOpen={cartOpen} onClose={handleCartClose} />
               <Routes>
