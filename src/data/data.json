@@ -100,5 +100,46 @@
       "phone": "+54 11 1234-5678"
     }
   ],
+<<<<<<< HEAD
   "cart": []
+=======
+  "cart": [
+    {
+      "id": "a882",
+      "name": "Matero Haversack, PU",
+      "price": 25000,
+      "image": "/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
+      "stock": 11,
+      "category": "materos",
+      "quantity": -1
+    },
+    {
+      "id": "a882",
+      "name": "Matero Haversack, PU",
+      "price": 25000,
+      "image": "/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg",
+      "stock": 11,
+      "category": "materos",
+      "quantity": -1
+    },
+    {
+      "id": "bccb",
+      "name": "Mochila Urban c/Porta Notebook",
+      "price": 30000,
+      "image": "/img/15 B-Photoroom.jpg",
+      "stock": 13,
+      "category": "mochilas",
+      "quantity": 1
+    },
+    {
+      "id": "bccb",
+      "name": "Mochila Urban c/Porta Notebook",
+      "price": 30000,
+      "image": "/img/15 B-Photoroom.jpg",
+      "stock": 13,
+      "category": "mochilas",
+      "quantity": 1
+    }
+  ]
+>>>>>>> 7886119f9a6f4b3975ed5536f55d9752e655cdde
 }
