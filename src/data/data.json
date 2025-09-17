@@ -78,7 +78,7 @@
         "/img/Bolsos/bolso rojo-Photoroom-Photoroom.jpg",
         "/img/Bolsos/bolso rosa-Photoroom-Photoroom.jpg"
       ],
-      "stock": "10",
+      "stock": "23",
       "price": "58000",
       "category": "bolsos",
       "tags": [
@@ -332,6 +332,28 @@
         "Fucsia"
       ],
       "id": "6j9qX41"
+    },
+    {
+      "name": "Mochila Clasic - Cordura ",
+      "description": "La mochila clásica Haversack es la compañera ideal para tus viajes y actividades diarias. Con una capacidad de 17 litros,\n su diseño urbano y escolar se adapta perfectamente a las necesidades de los adultos que buscan funcionalidad y estilo. \nFabricada en 100% poliamida, esta mochila es reforzada, lo que garantiza durabilidad y resistencia en el uso diario.\nCon dimensiones de 42 cm de altura, 30 cm de ancho y 14 cm de profundidad, es lo suficientemente espaciosa para llevar \nlo esencial sin ser voluminosa.\n",
+      "images": [
+        "/img\\Mochilas\\59-Photoroom.jpg",
+        "/img\\Mochilas\\62-Photoroom.jpg"
+      ],
+      "stock": "43",
+      "price": "16000",
+      "category": "mochilas",
+      "tags": [
+        "Mochila",
+        "Clasic",
+        "Cordura",
+        ""
+      ],
+      "colores": [
+        "Negro",
+        "Rojo"
+      ],
+      "id": "4gDpisA"
     }
   ],
   "users": [
@@ -404,6 +426,23 @@
       "total": 500000,
       "fecha": "2025-09-17T15:17:15.834Z",
       "id": 2
+    },
+    {
+      "nombre": "aaaa",
+      "apellido": "bbbb",
+      "email": "aaaa@test.com",
+      "telefono": "123455678",
+      "productos": [
+        {
+          "id": "0dce",
+          "name": "Carteron de viaje Impermeable ",
+          "cantidad": 10,
+          "precio": 58000
+        }
+      ],
+      "total": 580000,
+      "fecha": "2025-09-17T15:39:20.431Z",
+      "id": 3
     }
   ]
 }
