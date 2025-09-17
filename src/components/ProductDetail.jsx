@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
 import { useParams } from 'react-router-dom';
 import { getProductById } from '../services/api';
+import ProductImageCarousel from './ProductImageCarousel';
 import './ProductDetail.css';
 
 const cuotas = 24;
@@ -50,7 +51,7 @@ const ProductDetail = () => {
   const nombre = product.name || product.nombre;
   const descripcion = product.description || product.descripcion;
   // Normalizar ruta de imagen para que funcione en el navegador
-  let imagen = product.image || product.imagen;
+  let imagen = product.images?.[0] || product.image || product.imagen;
   if (imagen && imagen.startsWith('.')) {
     // Quitar el "." inicial y reemplazar backslash por slash para rutas Windows
     imagen = imagen.replace(/^\./, '').replace(/\\/g, '/').replace(/\//g, '/');
@@ -77,6 +78,7 @@ const ProductDetail = () => {
       name: nombre,
       price: precio,
       image: imagen,
+      images: product.images || [imagen],
       stock: stock,
       category: categoria
     };
@@ -88,10 +90,9 @@ const ProductDetail = () => {
   return (
     <div className="product-detail-haversack">
       <div className="product-detail-haversack-imgbox">
-        <img
-          src={imagen || '/placeholder-logo.png'}
-          alt={nombre}
-          className="product-detail-haversack-img"
+        <ProductImageCarousel
+          images={product.images || [imagen].filter(Boolean)}
+          productName={nombre}
         />
       </div>
       <div className="product-detail-haversack-info">

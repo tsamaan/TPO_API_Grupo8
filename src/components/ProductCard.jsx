@@ -4,7 +4,7 @@ import './ProductCard.css';
 const ProductCard = ({ product, inCart, onAdd, onRemove }) => {
   return (
     <div className="product-card">
-      <img src={product.image} alt={product.name} className="product-card-img" />
+      <img src={product.images?.[0] || product.image} alt={product.name} className="product-card-img" />
       <div className="product-card-info">
         <h3 className="product-card-name">{product.name}</h3>
         <div className="product-card-tags">
