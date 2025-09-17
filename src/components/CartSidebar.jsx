@@ -116,7 +116,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
             <span>ENVÍO:</span>
             <span>Calculálo arriba para verlo</span>
           </div>
-          <button className="cart-buy-btn" onClick={handleBuy}>INICIAR COMPRA</button>
+          <button className="cart-buy-btn" onClick={handleBuy}>FINALIZAR COMPRA</button>
         </div>
         <button className="cart-close-btn" onClick={onClose} aria-label="Cerrar carrito">×</button>
       </aside>
