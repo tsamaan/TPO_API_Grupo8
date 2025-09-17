@@ -41,8 +41,7 @@ export const CartProvider = ({ children }) => {
             }
         });
         setTotalItems(prevTotal => Math.max(prevTotal + quantity, 0));
-        // Opcional: llamar a la API en segundo plano
-        createCartItem({ ...product, quantity }).catch(() => {});
+        // Ya no se sincroniza el carrito con la API
     };
 
     // Eliminar producto del carrito y de la API
@@ -55,8 +54,7 @@ export const CartProvider = ({ children }) => {
             setTotalItems(prevTotal => prevTotal - productToRemove.quantity);
             return currentCart.filter(item => item.id !== productId);
         });
-        // Eliminar en la API
-        deleteCartItem(productId).catch(() => {});
+    // Ya no se sincroniza el carrito con la API
     };
 
     // Vaciar el carrito
