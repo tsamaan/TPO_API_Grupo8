@@ -82,12 +82,14 @@ function MainRoutes(props) {
     handleProductCountChange
   } = props;
 
-  // Mostrar filtro solo en listado de productos y categorías
+  // Mostrar filtro en listado de productos y categorías (incluye /productos/categoria/:categoria)
   const showFilterWidget = (
-    location.pathname.startsWith('/productos') &&
-    !/^\/productos\/[a-zA-Z0-9_-]+$/.test(location.pathname) &&
-    !location.pathname.startsWith('/productos/categoria/')
-  ) || location.pathname === '/productos' || location.pathname === '/mochilas' || location.pathname === '/materos' || location.pathname === '/bolsos';
+    location.pathname === '/productos' ||
+    location.pathname.startsWith('/productos/categoria/') ||
+    location.pathname === '/mochilas' ||
+    location.pathname === '/materos' ||
+    location.pathname === '/bolsos'
+  );
 
   return (
     <Routes>
