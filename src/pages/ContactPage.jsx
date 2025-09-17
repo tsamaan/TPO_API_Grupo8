@@ -21,7 +21,6 @@ const ContactPage = () => {
         e.preventDefault();
         // Aquí puedes agregar la lógica para enviar el formulario
         console.log('Datos del formulario:', formData);
-        // Resetear el formulario
         setFormData({
             nombre: '',
             email: '',
@@ -32,15 +31,14 @@ const ContactPage = () => {
     };
 
     return (
-        <div className="contact-container">
-            <div className="contact-info">
-                <h1>Contacto</h1>
-                <p>WhatsApp: 541151783645</p>
-                <p>Email: haversack.ventas@gmail.com</p>
-                <p>Dirección: Punta arenas 1326, La paternal, CABA</p>
+        <div className="contact-container" style={{ display: 'flex', flexDirection: 'row', alignItems: 'flex-start', gap: '4rem', minHeight: '80vh', width: '100%' }}>
+            <div className="contact-info" style={{ textAlign: 'left', minWidth: 320, marginLeft: 0, flex: '0 0 320px' }}>
+                <h1 style={{ marginBottom: '1.5rem' }}>Contacto</h1>
+                <p style={{ marginBottom: '1.2rem' }}>WhatsApp: 541151783645</p>
+                <p style={{ marginBottom: '1.2rem' }}>haversack.ventas@gmail.com</p>
+                <p>Punta arenas 1326, La paternal, CABA</p>
             </div>
-
-            <form className="contact-form" onSubmit={handleSubmit}>
+            <form className="contact-form" style={{ flex: '1 1 0', minWidth: 400, width: '100%', marginTop: '2.5rem' }} onSubmit={handleSubmit}>
                 <div className="form-group">
                     <label htmlFor="nombre">NOMBRE</label>
                     <input
@@ -52,7 +50,6 @@ const ContactPage = () => {
                         required
                     />
                 </div>
-
                 <div className="form-group">
                     <label htmlFor="email">EMAIL</label>
                     <input
@@ -64,7 +61,6 @@ const ContactPage = () => {
                         required
                     />
                 </div>
-
                 <div className="form-group">
                     <label htmlFor="telefono">TELÉFONO</label>
                     <input
@@ -76,7 +72,6 @@ const ContactPage = () => {
                         required
                     />
                 </div>
-
                 <div className="form-group">
                     <label htmlFor="mensaje">MENSAJE</label>
                     <textarea
@@ -87,7 +82,6 @@ const ContactPage = () => {
                         required
                     />
                 </div>
-
                 <button type="submit" className="submit-button">
                     Enviar
                 </button>
