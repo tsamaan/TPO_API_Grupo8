@@ -4,7 +4,9 @@
       "id": "bccb",
       "name": "Mochila Urban c/Porta Notebook",
       "description": "La mochila Haversack Urban es la compañera ideal para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 25 litros y un bosillo interno porta notebook es perfecta para llevar todo lo necesario, ya sea para la universidad, el trabajo o actividades escolares. Su diseño urbano y versátil se adapta a diferentes entornos, asegurando que siempre luzcas bien mientras transportas tus pertenencias.",
-      "images": ["/img/15 B-Photoroom.jpg"],
+      "images": [
+        "/img/15 B-Photoroom.jpg"
+      ],
       "stock": "13",
       "price": "30000",
       "category": "mochilas",
@@ -13,13 +15,18 @@
         "Urban",
         "PortaNotebook"
       ],
-      "colores": ["Negro", "Azul"]
+      "colores": [
+        "Negro",
+        "Azul"
+      ]
     },
     {
       "id": "27ff",
       "name": "Mochila Geometric",
       "description": "La mochila Haversack modelo Geométrico es la elección perfecta para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 28 litros, es ideal para el uso urbano, universitario o escolar, permitiendo llevar todo lo necesario de manera organizada. Su diseño cuenta con un compartimento específico para notebook, asegurando la protección de tus dispositivos electrónicos mientras te desplazas.",
-      "images": ["/img/68-Photoroom.jpg"],
+      "images": [
+        "/img/68-Photoroom.jpg"
+      ],
       "stock": "12",
       "price": "28500",
       "category": "mochilas",
@@ -28,13 +35,18 @@
         "Geometric",
         "Escolar"
       ],
-      "colores": ["Gris", "Verde"]
+      "colores": [
+        "Gris",
+        "Verde"
+      ]
     },
     {
       "id": "a882",
       "name": "Matero Haversack, PU",
       "description": "El Bolso Matero Haversack es la elección perfecta para quienes buscan funcionalidad y estilo en sus salidas. Con un diseño que combina un simil Cuero Liso con uno camuflado.\n\nSu capacidad de 20 litros y dimensiones de 40 cm de largo, 28 cm de ancho y 18 cm de profundidad lo convierten en un compañero ideal para llevar todo lo necesario.",
-      "images": ["/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg"],
+      "images": [
+        "/img/0699ac41-bec5-49ca-8a5e-de08adab1b18-Photoroom.jpg"
+      ],
       "stock": "11",
       "price": "25000",
       "category": "materos",
@@ -43,13 +55,18 @@
         "PU",
         "Camuflado"
       ],
-      "colores": ["Verde", "Marrón"]
+      "colores": [
+        "Verde",
+        "Marrón"
+      ]
     },
     {
       "id": "0dce",
       "name": "Carteron de viaje Impermeable ",
       "description": "Descubrí el Carterón de Viaje Grande Línea Andorra, la opción ideal para quienes buscan un bolso resistente y funcional sin perder estilo. Fabricado en tela de poliéster cubierta con una lámina engomada en su reverso, es repelente al agua y resistente a los desgarros, perfecto para proteger tus pertenencias en cualquier aventura.\n\nCon una capacidad de 30 litros y medidas de 50 cm de ancho, 18 cm de profundidad y 34 cm de altura, ofrece amplio espacio para todo lo que necesites. ",
-      "images": ["/img/bolso negro-Photoroom-Photoroom.jpg"],
+      "images": [
+        "/img/bolso negro-Photoroom-Photoroom.jpg"
+      ],
       "stock": "10",
       "price": "58000",
       "category": "bolsos",
@@ -58,26 +75,33 @@
         "Viaje",
         "Impermeable"
       ],
-      "colores": ["Negro"]
+      "colores": [
+        "Negro"
+      ]
     },
     {
       "id": "f1e6",
       "name": "Bandolera Andorra",
       "description": "Descubre la Bandolera Línea Andorra, un accesorio que combina elegancia y resistencia, ideal para la mujer moderna. Con unas medidas de 24 cm de ancho, 7 cm de profundidad y 18 cm de altura, es perfecta para acompañarte en tu día a día.\n\nEsta cartera está confeccionada en material sintético Andorra, que incluye una lámina engomada que la hace extremadamente resistente a desgarros, tirones y al agua. Su interior está forrado en un poliéster fino, manteniendo la misma durabilidad que la tela exterior.",
-      "images": ["/img/cartera negra  2-Photoroom.jpg"],
+      "images": [
+        "/img/cartera negra  2-Photoroom.jpg"
+      ],
       "stock": "12",
       "price": "20000",
-          "category": "accesorios",
+      "category": "accesorios",
       "tags": [
         "Accesorios",
         "Bandolera",
         "Andorra"
       ],
-      "colores": ["Negro", "Rojo"]
-        }
+      "colores": [
+        "Negro",
+        "Rojo"
+      ]
+    }
   ],
   "users": [
-        {
+    {
       "id": "1",
       "email": "test@haversack.com",
       "password": "test123",
