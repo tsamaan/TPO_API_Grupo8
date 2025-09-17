@@ -186,9 +186,9 @@ const CartSidebar = ({ isOpen, onClose }) => {
               border: '1.5px solid #b63939f0',
               alignItems: 'center'
             }}>
-              <div style={{ width: '100%', display: 'flex', gap: '1rem' }}>
-                <input type="text" name="nombre" placeholder="Nombre" value={userData.nombre} onChange={handleUserInputChange} required style={{ flex: 1, padding: '0.7rem', borderRadius: '8px', border: '1px solid #b63939', fontSize: '1rem', background: '#fff' }} />
-                <input type="text" name="apellido" placeholder="Apellido" value={userData.apellido} onChange={handleUserInputChange} required style={{ flex: 1, padding: '0.7rem', borderRadius: '8px', border: '1px solid #b63939', fontSize: '1rem', background: '#fff' }} />
+              <div className="cart-user-form-row" style={{ width: '100%', display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <input type="text" name="nombre" placeholder="Nombre" value={userData.nombre} onChange={handleUserInputChange} required style={{ flex: '1 1 100%', minWidth: '0', padding: '0.7rem', borderRadius: '8px', border: '1px solid #b63939', fontSize: '1rem', background: '#fff', marginBottom: '0.5rem' }} />
+                <input type="text" name="apellido" placeholder="Apellido" value={userData.apellido} onChange={handleUserInputChange} required style={{ flex: '1 1 100%', minWidth: '0', padding: '0.7rem', borderRadius: '8px', border: '1px solid #b63939', fontSize: '1rem', background: '#fff' }} />
               </div>
               <input type="email" name="email" placeholder="Email" value={userData.email} onChange={handleUserInputChange} required style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #b63939', fontSize: '1rem', background: '#fff' }} />
               <input type="text" name="telefono" placeholder="Teléfono" value={userData.telefono} onChange={handleUserInputChange} required style={{ width: '100%', padding: '0.7rem', borderRadius: '8px', border: '1px solid #b63939', fontSize: '1rem', background: '#fff' }} />
