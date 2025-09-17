@@ -107,12 +107,11 @@ function MainRoutes(props) {
             <CartSidebar isOpen={cartOpen} onClose={handleCartClose} />
               <Routes>
                 <Route path="/" element={<HomePage />} />
-                <Route path="/admin" element={<AdminDashboard />} />
                 <Route
-                  path="/dashboard"
+                  path="/admin"
                   element={
                     isAuthenticated ? (
-                      <ProtectedScreen onLogout={handleLogout} user={user} />
+                      <AdminDashboard />
                     ) : (
                       <Navigate to="/login" replace />
                     )
