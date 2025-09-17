@@ -24,23 +24,15 @@
     {
       "id": "27ff",
       "name": "Mochila Geometric",
-      "description": "La mochila Haversack modelo Geométrico es la elección perfecta para quienes buscan funcionalidad y estilo en su día a día. Con una capacidad de 28 litros, es ideal para el uso urbano, universitario o escolar, permitiendo llevar todo lo necesario de manera organizada. Su diseño cuenta con un compartimento específico para notebook, asegurando la protección de tus dispositivos electrónicos mientras te desplazas.",
+      "price": 28500,
+      "image": "/img/Mochilas/68-Photoroom.jpg",
       "images": [
         "/img/Mochilas/68-Photoroom.jpg",
         "/img/Mochilas/65-Photoroom.jpg"
       ],
-      "stock": "12",
-      "price": "28500",
+      "stock": 11,
       "category": "mochilas",
-      "tags": [
-        "Mochilas",
-        "Geometric",
-        "Escolar"
-      ],
-      "colores": [
-        "Rojo",
-        "Celeste"
-      ]
+      "quantity": 1
     },
     {
       "id": "a882",
@@ -350,5 +342,19 @@
       "phone": "+54 11 0000-0000"
     }
   ],
-  "cart": []
+  "cart": [
+    {
+      "id": "27ff",
+      "name": "Mochila Geometric",
+      "price": 28500,
+      "image": "/img/Mochilas/68-Photoroom.jpg",
+      "images": [
+        "/img/Mochilas/68-Photoroom.jpg",
+        "/img/Mochilas/65-Photoroom.jpg"
+      ],
+      "stock": 12,
+      "category": "mochilas",
+      "quantity": 1
+    }
+  ]
 }
