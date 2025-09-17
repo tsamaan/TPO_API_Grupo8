@@ -1,39 +1,21 @@
 import { useState, useEffect } from 'react';
-import { createProduct } from '../services/api';
-import './AddProductForm.css';
+import { updateProduct } from '../services/api';
+import './EditProductForm.css';
 
-const AddProductForm = ({ onProductAdded }) => {
-  const [product, setProduct] = useState({
-    name: '',
-    description: '',
-    images: [],
-    stock: 0,
-    price: 0,
-    category: '',
-    tags: [],
-    colores: []
-  });
-
+const EditProductForm = ({ product: productToEdit, onProductUpdated, onCancel }) => {
+  const [product, setProduct] = useState(productToEdit);
   const [currentImageUrl, setCurrentImageUrl] = useState('');
   const [currentColor, setCurrentColor] = useState('');
 
-  const [errors, setErrors] = useState({});
-
   useEffect(() => {
-    const validate = () => {
-      const newErrors = {};
-      if (!product.name) newErrors.name = 'El nombre es obligatorio.';
-      if (!product.description) newErrors.description = 'La descripción es obligatoria.';
-      if (product.stock < 0) newErrors.stock = 'El stock no puede ser negativo.';
-      if (product.price <= 0) newErrors.price = 'El precio debe ser mayor que cero.';
-      if (!product.category) newErrors.category = 'La categoría es obligatoria.';
-      if (!product.images || product.images.length === 0) newErrors.images = 'Debe agregar al menos una imagen.';
-      
-      setErrors(newErrors);
+    // Asegurar que el producto tenga los campos images y colores como arrays
+    const updatedProduct = {
+      ...productToEdit,
+      images: productToEdit.images || (productToEdit.image ? [productToEdit.image] : []),
+      colores: productToEdit.colores || []
     };
-
-    validate();
-  }, [product]);
+    setProduct(updatedProduct);
+  }, [productToEdit]);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -43,28 +25,11 @@ const AddProductForm = ({ onProductAdded }) => {
     }));
   };
 
-  const addColor = () => {
-    if (currentColor.trim() && !product.colores.includes(currentColor.trim())) {
-      setProduct(prevProduct => ({
-        ...prevProduct,
-        colores: [...prevProduct.colores, currentColor.trim()]
-      }));
-      setCurrentColor('');
-    }
-  };
-
-  const removeColor = (index) => {
-    setProduct(prevProduct => ({
-      ...prevProduct,
-      colores: prevProduct.colores.filter((_, i) => i !== index)
-    }));
-  };
-
   const addImage = () => {
     if (currentImageUrl.trim()) {
       setProduct(prevProduct => ({
         ...prevProduct,
-        images: [...prevProduct.images, currentImageUrl.trim()]
+        images: [...(prevProduct.images || []), currentImageUrl.trim()]
       }));
       setCurrentImageUrl('');
     }
@@ -73,48 +38,53 @@ const AddProductForm = ({ onProductAdded }) => {
   const removeImage = (index) => {
     setProduct(prevProduct => ({
       ...prevProduct,
-      images: prevProduct.images.filter((_, i) => i !== index)
+      images: (prevProduct.images || []).filter((_, i) => i !== index)
+    }));
+  };
+
+  const addColor = () => {
+    if (currentColor.trim() && !(product.colores || []).includes(currentColor.trim())) {
+      setProduct(prevProduct => ({
+        ...prevProduct,
+        colores: [...(prevProduct.colores || []), currentColor.trim()]
+      }));
+      setCurrentColor('');
+    }
+  };
+
+  const removeColor = (index) => {
+    setProduct(prevProduct => ({
+      ...prevProduct,
+      colores: (prevProduct.colores || []).filter((_, i) => i !== index)
     }));
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    if (Object.keys(errors).length === 0) {
-      try {
-        await createProduct(product);
-        alert('Producto creado con éxito');
-        if(onProductAdded) onProductAdded();
-        setProduct({
-          name: '',
-          description: '',
-          images: [],
-          stock: 0,
-          price: 0,
-          category: '',
-          tags: [],
-          colores: []
-        });
-        setCurrentImageUrl('');
-        setCurrentColor('');
-      } catch (error) {
-        alert('Error al crear el producto');
-        console.error(error);
-      }
-    } else {
-      alert('Por favor, corrija los errores en el formulario.');
+    try {
+      await updateProduct(product.id, product);
+      alert('Producto actualizado con éxito');
+      onProductUpdated();
+    } catch (error) {
+      alert('Error al actualizar el producto');
+      console.error(error);
     }
-  };
-  
-  const getButtonTitle = () => {
-    if (Object.keys(errors).length === 0) {
-      return '';
-    }
-    return Object.values(errors).join('\n');
   };
 
   return (
     <form onSubmit={handleSubmit} className="product-form">
-      <h2>Alta de Producto</h2>
+      <h2>Editar Producto</h2>
+      
+      <div className="form-group">
+        <label htmlFor="id">ID del Producto</label>
+        <input
+          type="text"
+          id="id"
+          name="id"
+          value={product.id}
+          disabled
+        />
+      </div>
 
       <div className="form-group">
         <label htmlFor="name">Nombre</label>
@@ -124,8 +94,8 @@ const AddProductForm = ({ onProductAdded }) => {
           name="name"
           value={product.name}
           onChange={handleChange}
+          required
         />
-        {errors.name && <p className="error">{errors.name}</p>}
       </div>
 
       <div className="form-group">
@@ -135,8 +105,8 @@ const AddProductForm = ({ onProductAdded }) => {
           name="description"
           value={product.description}
           onChange={handleChange}
+          required
         />
-        {errors.description && <p className="error">{errors.description}</p>}
       </div>
 
       <div className="form-group">
@@ -154,9 +124,8 @@ const AddProductForm = ({ onProductAdded }) => {
             Agregar
           </button>
         </div>
-        {errors.images && <p className="error">{errors.images}</p>}
 
-        {product.images.length > 0 && (
+        {product.images && product.images.length > 0 && (
           <div className="image-preview">
             {product.images.map((imageUrl, index) => (
               <div key={index} className="image-item">
@@ -178,8 +147,8 @@ const AddProductForm = ({ onProductAdded }) => {
           name="stock"
           value={product.stock}
           onChange={handleChange}
+          required
         />
-        {errors.stock && <p className="error">{errors.stock}</p>}
       </div>
 
       <div className="form-group">
@@ -191,8 +160,8 @@ const AddProductForm = ({ onProductAdded }) => {
           value={product.price}
           onChange={handleChange}
           step="0.01"
+          required
         />
-        {errors.price && <p className="error">{errors.price}</p>}
       </div>
 
       <div className="form-group">
@@ -203,8 +172,8 @@ const AddProductForm = ({ onProductAdded }) => {
           name="category"
           value={product.category}
           onChange={handleChange}
+          required
         />
-        {errors.category && <p className="error">{errors.category}</p>}
       </div>
 
       <div className="form-group">
@@ -229,12 +198,12 @@ const AddProductForm = ({ onProductAdded }) => {
             onChange={(e) => setCurrentColor(e.target.value)}
             onKeyPress={(e) => e.key === 'Enter' && (e.preventDefault(), addColor())}
           />
-          <button type="button" onClick={addColor} disabled={!currentColor.trim() || product.colores.includes(currentColor.trim())}>
+          <button type="button" onClick={addColor} disabled={!currentColor.trim() || (product.colores || []).includes(currentColor.trim())}>
             Agregar Color
           </button>
         </div>
 
-        {product.colores.length > 0 && (
+        {product.colores && product.colores.length > 0 && (
           <div className="colors-preview">
             {product.colores.map((color, index) => (
               <div key={index} className="color-item">
@@ -249,16 +218,11 @@ const AddProductForm = ({ onProductAdded }) => {
       </div>
 
       <div className="form-actions">
-        <button 
-          type="submit" 
-          disabled={Object.keys(errors).length > 0}
-          title={getButtonTitle()}
-        >
-          Crear Producto
-        </button>
+        <button type="submit">Guardar Cambios</button>
+        <button type="button" onClick={onCancel}>Cancelar</button>
       </div>
     </form>
   );
 };
 
-export default AddProductForm;
+export default EditProductForm;

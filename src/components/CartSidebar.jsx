@@ -31,7 +31,7 @@ const CartSidebar = ({ isOpen, onClose }) => {
           ) : (
             cart.map(item => (
               <div className="cart-item" key={item.id}>
-                <img src={item.image} alt={item.name} className="cart-item-img" />
+                <img src={item.images?.[0] || item.image} alt={item.name} className="cart-item-img" />
                 <div className="cart-item-info">
                   <div className="cart-item-name">{item.name}</div>
                   <div className="cart-item-price">
